@@ -1,0 +1,293 @@
+name: SpawnJoin
+version: 5.0.1
+description: Manages spawns, hubs, warps, lobbies and more.
+author: Shades161
+website: http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/
+
+main: com.cloudcraftgaming.spawnjoin.Main
+
+commands:
+  setspawn:
+    description: Sets the spawn.
+    permission: SpawnJoin.use.setspawn
+  spawn:
+    description: Teleports the player to the spawn.
+    permission: SpawnJoin.use.spawn
+  spawns:
+    description: Lists the set spawns for every world.
+    permission: SpawnJoin.use.spawns
+  sethub:
+    description: Sets the hub.
+    permission: SpawnJoin.use.sethub
+  hub:
+    description: Teleports the player to the hub.
+    permission: SpawnJoin.use.hub
+  delhub:
+    description: Deletes a hub.
+    permission: SpawnJoin.use.delhub
+  setlobby:
+    description: Sets the Lobby.
+    permission: SpawnJoin.use.setlobby
+  lobby:
+    description: Teleports the player to the Lobby.
+    permission: SpawnJoin.use.lobby
+  dellobby:
+    description: Deletes a lobby.
+    permission: SpawnJoin.use.dellobby
+  setwarp:
+    description: Sets a warp.
+    permission: SpawnJoin.use.setwarp
+  warp:
+    description: Teleports the player to a warp.
+    permission: SpawnJoin.use.warp
+  delwarp:
+    description: Deletes a warp.
+    permission: SpawnJoin.use.delwarp
+  tpr:
+    description: Teleports the player to a random place.
+    permission: SpawnJoin.use.tpr
+  spawnjoin:
+    description: The help and other stuff command.
+  hubs:
+    description: Displays list of hubs.
+    permission: SpawnJoin.use.hubs
+  lobbies:
+    description: Displays list of lobbies.
+    permission: SpawnJoin.use.lobbies
+  warps:
+    description: Displays list of warps.
+    permission: SpawnJoin.use.warps
+  spectate:
+    description: Teleports the player to a spectating location and displays a list of spectating locations.
+    permission: SpawnJoin.use.spectate
+  setspectate:
+    description: Sets a spectating location.
+    permission: SpawnJoin.use.setspectate
+  delspectate:
+    description: Deletes a spectating location.
+    permission: SpawnJoin.use.delspectate
+  sethome:
+    description: Sets a Home for the player.
+    permission: SpawnJoin.use.sethome
+  delhome:
+    description: Deletes the players Home.
+    permission: SpawnJoin.use.DelHome
+  home:
+    description: Teleports the player to their Home.
+    permission: SpawnJoin.use.Home
+  homes:
+    description: Displays a list of the players homes.
+    permission: SpawnJoin.use.homes
+  edithome:
+    description: Edits Home data.
+    permission: SpawnJoin.use.edithome
+  editwarp:
+    description: Edits warp info.
+    permission: SpawnJoin.use.editwarp
+  editlobby:
+    description: Edits lobby info.
+    permission: SpawnJoin.use.editlobby
+  edithub:
+    description: Edits hub info.
+    permission: SpawnJoin.use.edithub
+  editspawn:
+    description: Edits spawn info.
+    permission: SpawnJoin.use.editspawn
+  editsign:
+    description: Edits a SpawnJoin sign.
+    permission: SpawnJoin.use.editsign
+  invwarp:
+    description: Opens an inventory GUI for warps.
+    permission: SpawnJoin.use.invwarp
+  invhub:
+    description: Opens an inventory GUI for hubs.
+    permission: SpawnJoin.use.invhub
+  invlobby:
+    description: Opens an inventory GUI for lobbies.
+    permission: SpawnJoin.use.invlobby
+  invspectate:
+    description: Opens an inventory GUI for spectating Locations.
+    permission: SpawnJoin.use.invspectate
+  invspawn:
+    description: Opens an inventory GUI for spawns.
+    permission: SpawnJoin.use.invspawn
+  invhome:
+    description: Opens an inventory GUI for homes.
+    permission: SpawnJoin.use.invhome
+
+permissions:
+  SpawnJoin.use.setspawn:
+    description: Allows use of the setspawn command.
+    default: op
+  SpawnJoin.use.spawn:
+    description: Allows use of the spawn command.
+    default: true
+  SpawnJoin.use.spawnothers:
+    description: Allows teleporting other players to spawn.
+    default: op
+  SpawnJoin.use.spawns:
+    description: Allows use of the spawns command.
+    default: true
+  SpawnJoin.use.sethub:
+    description: Allows the use of the sethub command.
+    default: op
+  SpawnJoin.use.hub:
+    description: Allows the use of the hub command.
+    default: true
+  SpawnJoin.use.delhub:
+    description: Allows the use of the delhub command.
+    default: op
+  SpawnJoin.use.setlobby:
+    description: Allows the use of the setlobby command.
+    default: op
+  SpawnJoin.use.lobby:
+    description: Allows the use of the lobby command.
+    default: true
+  SpawnJoin.use.dellobby:
+    description: Allows the use of the dellobby command.
+    default: op
+  SpawnJoin.use.setwarp:
+    description: Allows the use of the setwarp command.
+    default: op
+  SpawnJoin.use.warp:
+    description: Allows the use of the warp command.
+    default: true
+  SpawnJoin.use.delwarp:
+    description: Allows the use of the delwarp command.
+    default: op
+  SpawnJoin.use.tpr:
+    description: Allows the use of the tpr command.
+    default: true
+  SpawnJoin.use.Hubs:
+    description: Allows the use of the hubs command.
+    default: true
+  SpawnJoin.use.Lobbies:
+    description: Allows the use of the lobbies command.
+    default: true
+  SpawnJoin.use.warps:
+    description: Allows the use of the warps command.
+    default: true
+  SpawnJoin.use.spectate:
+    description: Allows the use of the spectate command.
+    default: true
+  SpawnJoin.use.setspectate:
+    description: Allows the use of the setspectate command.
+    default: op
+  SpawnJoin.use.delspectate:
+    description: Allows use of the delspectate command.
+    default: op
+  SpawnJoin.use.sethome:
+    description: Allows use of the sethome command.
+    default: true
+  SpawnJoin.use.delhome:
+    description: Allows use of the DelHome command.
+    default: true
+  SpawnJoin.use.home:
+    description: Allows use of the Home command.
+    default: true
+  SpawnJoin.use.homes:
+    description: Allows use of the homes command.
+    default: true
+  SpawnJoin.use.edithome:
+    description: Allows use of the edithome command.
+    default: op
+  SpawnJoin.use.editwarp:
+    description: Allows use of the editwarp command.
+    default: op
+  SpawnJoin.use.editlobby:
+    description: Allows use of the editlobby command.
+    default: op
+  SpawnJoin.use.edithub:
+    description: Allows use of the edithub command.
+    default: op
+  SpawnJoin.use.editspawn:
+    description: Allows use of the editspawn command.
+    default: op
+  SpawnJoin.use.editsign:
+    description: Allows use of the editsign command.
+    default: op
+  SpawnJoin.use.invwarp:
+     description: Allows use of the invwarp command.
+     default: true
+  SpawnJoin.use.invhub:
+    desctiption: Allows use of the invhub command.
+    default: true
+  SpawnJoin.use.invlobby:
+    description: Allows use of the invlobby command.
+    default: true
+  SpawnJoin.use.invspectate:
+    description: Allows use of the invspectate command.
+    default: true
+  SpawnJoin.use.invspawn:
+    description: Allows use of the invspawn command.
+    default: op
+  SpawnJoin.use.invhome:
+    description: Allows use of the invhome command.
+    default: true
+  SpawnJoin.player.*:
+    description: Gives access to all player commands and sign perms.
+    default: true
+    children:
+      SpawnJoin.use.spawn: true
+      SpawnJoin.use.spawns: true
+      SpawnJoin.use.hub: true
+      SpawnJoin.use.hubs: true
+      SpawnJoin.use.lobby: true
+      SpawnJoin.use.lobbies: true
+      SpawnJoin.use.warp: true
+      SpawnJoin.use.warps: true
+      SpawnJoin.use.spectate: true
+      SpawnJoin.use.home: true
+      SpawnJoin.use.sethome: true
+      SpawnJoin.use.delhome: true
+      SpawnJoin.use.homes: true
+      SpawnJoin.use.help: true
+      SpawnJoin.use.tpr: true
+      SpawnJoin.sign.use.warp: true
+      SpawnJoin.sign.use.hub: true
+      SpawnJoin.sign.use.lobby: true
+      SpawnJoin.sign.use.spectate: true
+      SpawnJoin.sign.use.spawn: true
+      SpawnJoin.sign.use.tpr: true
+      SpawnJoin.sign.use.home: true
+  SpawnJoin.admin.*:
+    description: Gives access to all admin commands and sign perms.
+    default: op
+    children:
+      SpawnJoin.use.setspawn: true
+      SpawnJoin.use.sethub: true
+      SpawnJoin.use.delhub: true
+      SpawnJoin.use.edithub: true
+      SpawnJoin.use.setlobby: true
+      SpawnJoin.use.dellobby: true
+      SpawnJoin.use.editlobby: true
+      SpawnJoin.use.setwarp: true
+      SpawnJoin.use.delwarp: true
+      SpawnJoin.use.editwarp: true
+      SpawnJoin.use.setspectate: true
+      SpawnJoin.use.delspectate: true
+      SpawnJoin.use.edithome: true
+      SpawnJoin.use.editsign: true
+      SpawnJoin.admin: true
+      SpawnJoin.sign.place.warp: true
+      SpawnJoin.sign.place.hub: true
+      SpawnJoin.sign.place.lobby: true
+      SpawnJoin.sign.place.spectate: true
+      SpawnJoin.sign.place.tpr: true
+      SpawnJoin.sign.place.spawn: true
+      SpawnJoin.sign.place.home: true
+      SpawnJoin.sign.break: true
+      SpawnJoin.notify.update: true
+      SpawnJoin.bypass.join: true
+  SpawnJoin.bypass.*:
+    description: Bypass all delays and cooldowns.
+    default: op
+    children:
+      SpawnJoin.bypass.join: true
+      SpawnJoin.bypass.spawn: true
+      SpawnJoin.bypass.hub: true
+      SpawnJoin.bypass.lobby: true
+      SpawnJoin.bypass.warp: true
+      SpawnJoin.bypass.spectate: true
+      SpawnJoin.bypass.tpr: true
+      SpawnJoin.cooldown.tpr: true
