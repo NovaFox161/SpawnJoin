@@ -27,9 +27,14 @@ public class InvWarp implements CommandExecutor {
                 if (sender.hasPermission("SpawnJoin.use.invwarp")) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;
-                        player.openInventory(MenuManager.warpInv);
-                        String msg = MessageManager.getMessageYml().getString("Inventory.OpenWarp");
-                        player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        if (MenuManager.warpInv != null) {
+                            player.openInventory(MenuManager.warpInv);
+                            String msg = MessageManager.getMessageYml().getString("Inventory.OpenWarp");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        } else {
+                            String msg = MessageManager.getMessageYml().getString("Warp.NoSet");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        }
                     }
                 } else {
                     sender.sendMessage(prefix + perm);

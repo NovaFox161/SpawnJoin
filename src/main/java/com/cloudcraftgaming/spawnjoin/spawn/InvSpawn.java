@@ -28,9 +28,14 @@ public class InvSpawn implements CommandExecutor {
                     if (sender instanceof Player) {
                         MenuManager.updateSpawnInv();
                         Player player = (Player) sender;
-                        player.openInventory(MenuManager.spawnInv);
-                        String msg = MessageManager.getMessageYml().getString("Inventory.OpenSpawn");
-                        player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        if (MenuManager.spawnInv != null) {
+                            player.openInventory(MenuManager.spawnInv);
+                            String msg = MessageManager.getMessageYml().getString("Inventory.OpenSpawn");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        } else {
+                            String msg = MessageManager.getMessageYml().getString("Spawn.NoSet");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        }
                     }
                 } else {
                     sender.sendMessage(prefix + perm);

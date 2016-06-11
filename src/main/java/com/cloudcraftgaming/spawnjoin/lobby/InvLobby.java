@@ -27,9 +27,14 @@ public class InvLobby implements CommandExecutor {
                 if (sender.hasPermission("SpawnJoin.use.invlobby")) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;
-                        player.openInventory(MenuManager.lobbyInv);
-                        String msg = MessageManager.getMessageYml().getString("Inventory.OpenLobby");
-                        player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        if (MenuManager.lobbyInv != null) {
+                            player.openInventory(MenuManager.lobbyInv);
+                            String msg = MessageManager.getMessageYml().getString("Inventory.OpenLobby");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        } else {
+                            String msg = MessageManager.getMessageYml().getString("Lobby.NoSet");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        }
                     }
                 } else {
                     sender.sendMessage(prefix + perm);

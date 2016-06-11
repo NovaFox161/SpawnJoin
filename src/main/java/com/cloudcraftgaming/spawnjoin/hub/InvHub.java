@@ -27,9 +27,14 @@ public class InvHub implements CommandExecutor {
                 if (sender.hasPermission("SpawnJoin.use.invhub")) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;
-                        player.openInventory(MenuManager.hubInv);
-                        String msg = MessageManager.getMessageYml().getString("Inventory.OpenHub");
-                        player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        if (MenuManager.hubInv != null) {
+                            player.openInventory(MenuManager.hubInv);
+                            String msg = MessageManager.getMessageYml().getString("Inventory.OpenHub");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        } else {
+                            String msg = MessageManager.getMessageYml().getString("Hub.NoSet");
+                            player.sendMessage(prefix + ChatColor.RED + ChatColor.translateAlternateColorCodes('&', msg));
+                        }
                     }
                 } else {
                     sender.sendMessage(prefix + perm);

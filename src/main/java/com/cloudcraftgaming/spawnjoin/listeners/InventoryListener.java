@@ -29,7 +29,7 @@ public class InventoryListener implements Listener {
         Inventory inv = event.getInventory();
         ItemStack clicked = event.getCurrentItem();
         if (!(clicked == null)) {
-            if (inv.getName().equals(MenuManager.warpInv.getName())) {
+            if (MenuManager.warpInv != null && inv.getName().equals(MenuManager.warpInv.getName())) {
                 event.setCancelled(true);
                 if (!(clicked.getType().equals(Material.AIR))) {
                     ItemMeta meta = clicked.getItemMeta();
@@ -43,7 +43,7 @@ public class InventoryListener implements Listener {
                         }
                     }
                 }
-            } else if (inv.getName().equals(MenuManager.hubInv.getName())) {
+            } else if (MenuManager.hubInv != null && inv.getName().equals(MenuManager.hubInv.getName())) {
                 event.setCancelled(true);
                 if (!(clicked.getType().equals(Material.AIR))) {
                     ItemMeta meta = clicked.getItemMeta();
@@ -57,7 +57,7 @@ public class InventoryListener implements Listener {
                         }
                     }
                 }
-            } else if (inv.getName().equals(MenuManager.lobbyInv.getName())) {
+            } else if (MenuManager.lobbyInv != null && inv.getName().equals(MenuManager.lobbyInv.getName())) {
                 event.setCancelled(true);
                 if (!(clicked.getType().equals(Material.AIR))) {
                     ItemMeta meta = clicked.getItemMeta();
@@ -71,7 +71,7 @@ public class InventoryListener implements Listener {
                         }
                     }
                 }
-            } else if (inv.getName().equalsIgnoreCase(MenuManager.spectateInv.getName())) {
+            } else if (MenuManager.spectateInv != null && inv.getName().equalsIgnoreCase(MenuManager.spectateInv.getName())) {
                 event.setCancelled(true);
                 if (!(clicked.getType().equals(Material.AIR))) {
                     ItemMeta meta = clicked.getItemMeta();
@@ -85,7 +85,7 @@ public class InventoryListener implements Listener {
                         }
                     }
                 }
-            } else if (inv.getName().equalsIgnoreCase(MenuManager.spawnInv.getName())) {
+            } else if (MenuManager.spawnInv != null && inv.getName().equalsIgnoreCase(MenuManager.spawnInv.getName())) {
                 event.setCancelled(true);
                 if (!(clicked.getType().equals(Material.AIR))) {
                     ItemMeta meta = clicked.getItemMeta();

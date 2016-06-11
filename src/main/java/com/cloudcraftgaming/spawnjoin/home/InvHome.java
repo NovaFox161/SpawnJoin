@@ -30,8 +30,8 @@ public class InvHome implements CommandExecutor {
                             String msg = MessageManager.getMessageYml().getString("Inventory.OpenHome");
                             player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
                         } else {
-                            player.sendMessage(MessageManager.getPrefix() + ChatColor.DARK_RED + "Error: Home Inventory issue!");
-                            player.sendMessage(MessageManager.getPrefix() + ChatColor.DARK_RED + "Error code: 1001, please report to dev!");
+                            String msg = MessageManager.getMessageYml().getString("Home.NoSet");
+                            player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
                         }
                     }
                 } else {

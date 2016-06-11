@@ -26,10 +26,15 @@ public class InvSpectate implements CommandExecutor {
                 if (sender.hasPermission("SpawnJoin.use.invspectate")
                         && plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
                     if (sender instanceof Player) {
-                        Player player = (Player) sender;
-                        player.openInventory(MenuManager.spectateInv);
-                        String msg = MessageManager.getMessageYml().getString("Inventory.OpenSpectate");
-                        player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        if (MenuManager.spectateInv != null) {
+                            Player player = (Player) sender;
+                            player.openInventory(MenuManager.spectateInv);
+                            String msg = MessageManager.getMessageYml().getString("Inventory.OpenSpectate");
+                            player.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        } else {
+                            String msg = MessageManager.getMessageYml().getString("Spectate.NoSet");
+                            sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+                        }
                     }
                 } else {
                     sender.sendMessage(prefix + perm);
