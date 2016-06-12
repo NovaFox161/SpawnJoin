@@ -52,13 +52,25 @@ implements CommandExecutor {
 							if (sender instanceof Player) {
 								String homeName = args[0];
 								String itemIdS = args[2];
-								try {
-									Integer itemId = Integer.valueOf(itemIdS);
-									Player player = (Player) sender;
-									editItem(homeName, itemId, player);
-								} catch (NumberFormatException e) {
-									String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
-									sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+								if (!itemIdS.contains(":")) {
+									try {
+										Integer itemId = Integer.valueOf(itemIdS);
+										Player player = (Player) sender;
+										editItem(homeName, itemId, null, player);
+									} catch (NumberFormatException e) {
+										String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+										sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+									}
+								} else {
+									try {
+										Integer itemId = Integer.valueOf(itemIdS.split(":")[0]);
+										Short damage = Short.valueOf(itemIdS.split(":")[1]);
+										Player player = (Player) sender;
+										editItem(homeName, itemId, damage, player);
+									} catch (NumberFormatException e) {
+										String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+										sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+									}
 								}
 							} else {
 								String msg = MessageManager.getMessageYml().getString("Notifications.PlayerOnly");
@@ -94,9 +106,10 @@ implements CommandExecutor {
 		}
 	}
 	@SuppressWarnings("deprecation")
-	private static void editItem(String homeName, Integer itemId, Player sender) {
+	private static void editItem(String homeName, Integer itemId, Short damage, Player sender) {
 		if (LocationChecker.homeExists(homeName, sender)) {
 			Main.plugin.homes.set("HOMES." + sender.getUniqueId() + "." + homeName + ".item", itemId);
+			Main.plugin.homes.set("HOMES." + sender.getUniqueId() + "." + homeName + ".itemProp", damage);
 			Main.plugin.saveCustomConfig(Main.plugin.homes, Main.plugin.homeFile);
 			String msgOr = MessageManager.getMessageYml().getString("Home.EditItem");
 			String msg = msgOr.replaceAll("%home%", homeName).replaceAll("%item%", Material.getMaterial(itemId).name());

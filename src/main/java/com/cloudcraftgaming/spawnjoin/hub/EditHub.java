@@ -121,18 +121,37 @@ implements CommandExecutor {
 			String msg = MessageManager.getMessageYml().getString("Hub.NoHub");
 			sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
 		} else {
-			try {
-				Integer itemId = Integer.parseInt(item);
-				Main.plugin.hubs.set("HUBS." + hubName + ".item", itemId);
-				Main.plugin.saveCustomConfig(Main.plugin.hubs, Main.plugin.hubFile);
-				Material itemMat = Material.getMaterial(itemId);
-				String msgOr = MessageManager.getMessageYml().getString("Hub.EditItem");
-				String msg = msgOr.replaceAll("%hub%", hubName).replaceAll("%item%", itemMat.name());
-				sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
-				MenuManager.updateHubInv();
-			} catch (NumberFormatException e) {
-				String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
-				sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+			if (!item.contains(":")) {
+				try {
+					Integer itemId = Integer.parseInt(item);
+					Main.plugin.hubs.set("HUBS." + hubName + ".item", itemId);
+					Main.plugin.hubs.set("HUBS." + hubName + ".itemProp", null);
+					Main.plugin.saveCustomConfig(Main.plugin.hubs, Main.plugin.hubFile);
+					Material itemMat = Material.getMaterial(itemId);
+					String msgOr = MessageManager.getMessageYml().getString("Hub.EditItem");
+					String msg = msgOr.replaceAll("%hub%", hubName).replaceAll("%item%", itemMat.name());
+					sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+					MenuManager.updateHubInv();
+				} catch (NumberFormatException e) {
+					String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
+			} else {
+				try {
+					Integer itemId = Integer.valueOf(item.split(":")[0]);
+					Short damage = Short.valueOf(item.split(":")[1]);
+					Main.plugin.hubs.set("HUBS." + hubName + ".item", itemId);
+					Main.plugin.hubs.set("HUBS." + hubName + ".itemProp", damage);
+					Main.plugin.saveCustomConfig(Main.plugin.hubs, Main.plugin.hubFile);
+					Material itemMat = Material.getMaterial(itemId);
+					String msgOr = MessageManager.getMessageYml().getString("Hub.EditItem");
+					String msg = msgOr.replaceAll("%hub%", hubName).replaceAll("%item%", itemMat.name());
+					sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+					MenuManager.updateHubInv();
+				} catch (NumberFormatException e) {
+					String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
 			}
 		}
 	}

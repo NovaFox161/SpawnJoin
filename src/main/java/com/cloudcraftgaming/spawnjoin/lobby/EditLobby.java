@@ -119,18 +119,37 @@ implements CommandExecutor {
 			String msg = MessageManager.getMessageYml().getString("Lobby.NoLobby");
 			sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
 		} else {
-			try {
-				Integer itemId = Integer.parseInt(item);
-				Main.plugin.lobs.set("LOBBIES." + lobbyName + ".item", itemId);
-				Main.plugin.saveCustomConfig(Main.plugin.lobs, Main.plugin.lobFile);
-				Material itemMat = Material.getMaterial(itemId);
-				String msgOr = MessageManager.getMessageYml().getString("Lobby.EditItem");
-				String msg = msgOr.replaceAll("%lobby%", lobbyName).replaceAll("%item%", itemMat.name());
-				sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
-				MenuManager.updateLobbyInv();
-			} catch (NumberFormatException e) {
-				String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
-				sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+			if (!item.contains(":")) {
+				try {
+					Integer itemId = Integer.parseInt(item);
+					Main.plugin.lobs.set("LOBBIES." + lobbyName + ".item", itemId);
+					Main.plugin.lobs.set("LOBBIES." + lobbyName + ".itemProp", null);
+					Main.plugin.saveCustomConfig(Main.plugin.lobs, Main.plugin.lobFile);
+					Material itemMat = Material.getMaterial(itemId);
+					String msgOr = MessageManager.getMessageYml().getString("Lobby.EditItem");
+					String msg = msgOr.replaceAll("%lobby%", lobbyName).replaceAll("%item%", itemMat.name());
+					sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+					MenuManager.updateLobbyInv();
+				} catch (NumberFormatException e) {
+					String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
+			} else {
+				try {
+					Integer itemId = Integer.valueOf(item.split(":")[0]);
+					Short damage = Short.valueOf(item.split(":")[1]);
+					Main.plugin.lobs.set("LOBBIES." + lobbyName + ".item", itemId);
+					Main.plugin.lobs.set("LOBBIES." + lobbyName + ".itemProp", damage);
+					Main.plugin.saveCustomConfig(Main.plugin.lobs, Main.plugin.lobFile);
+					Material itemMat = Material.getMaterial(itemId);
+					String msgOr = MessageManager.getMessageYml().getString("Lobby.EditItem");
+					String msg = msgOr.replaceAll("%lobby%", lobbyName).replaceAll("%item%", itemMat.name());
+					sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
+					MenuManager.updateLobbyInv();
+				} catch (NumberFormatException e) {
+					String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
 			}
 		}
 	}

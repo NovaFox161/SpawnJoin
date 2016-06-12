@@ -78,18 +78,37 @@ public class EditSpawn implements CommandExecutor {
             String msg = MessageManager.getMessageYml().getString("Spawn.NoSpawn");
             sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
         } else {
-            try {
-                Integer itemId = Integer.parseInt(item);
-                Main.plugin.spawns.set("Spawns." + spawnName + ".item", itemId);
-                Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
-                Material itemMat = Material.getMaterial(itemId);
-                String msgOr = MessageManager.getMessageYml().getString("Spawn.EditItem");
-                String msg = msgOr.replaceAll("%spawn%", spawnName).replaceAll("%item%", itemMat.name());
-                sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
-                MenuManager.updateSpawnInv();
-            } catch (NumberFormatException e) {
-                String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
-                sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+            if (!item.contains(":")) {
+                try {
+                    Integer itemId = Integer.parseInt(item);
+                    Main.plugin.spawns.set("Spawns." + spawnName + ".item", itemId);
+                    Main.plugin.spawns.set("Spawns." + spawnName + ".itemProp", null);
+                    Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
+                    Material itemMat = Material.getMaterial(itemId);
+                    String msgOr = MessageManager.getMessageYml().getString("Spawn.EditItem");
+                    String msg = msgOr.replaceAll("%spawn%", spawnName).replaceAll("%item%", itemMat.name());
+                    sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+                    MenuManager.updateSpawnInv();
+                } catch (NumberFormatException e) {
+                    String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+                    sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+                }
+            } else {
+                try {
+                    Integer itemId = Integer.valueOf(item.split(":")[0]);
+                    Short damage = Short.valueOf(item.split(":")[1]);
+                    Main.plugin.spawns.set("Spawns." + spawnName + ".item", itemId);
+                    Main.plugin.spawns.set("Spawns." + spawnName + "itemProp", damage);
+                    Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
+                    Material itemMat = Material.getMaterial(itemId);
+                    String msgOr = MessageManager.getMessageYml().getString("Spawn.EditItem");
+                    String msg = msgOr.replaceAll("%spawn%", spawnName).replaceAll("%item%", itemMat.name());
+                    sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+                    MenuManager.updateSpawnInv();
+                } catch (NumberFormatException e) {
+                    String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+                    sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+                }
             }
         }
     }

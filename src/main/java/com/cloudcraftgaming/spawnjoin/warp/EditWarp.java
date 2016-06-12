@@ -121,18 +121,37 @@ implements CommandExecutor {
 			String msg = MessageManager.getMessageYml().getString("Warp.NoWarp");
 			sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
 		} else {
-			try {
-				Integer itemId = Integer.parseInt(item);
-				Main.plugin.warps.set("WARPS." + warpName + ".item", itemId);
-				Main.plugin.saveCustomConfig(Main.plugin.warps, Main.plugin.warpFile);
-				Material itemMat = Material.getMaterial(itemId);
-				String msgOr = MessageManager.getMessageYml().getString("Warp.EditItem");
-				String msg = msgOr.replaceAll("%warp%", warpName).replaceAll("%item%", itemMat.name());
-				sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
-				MenuManager.updateWarpInv();
-			} catch (NumberFormatException e) {
-				String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
-				sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+			if (!item.contains(":")) {
+				try {
+					Integer itemId = Integer.parseInt(item);
+					Main.plugin.warps.set("WARPS." + warpName + ".item", itemId);
+					Main.plugin.warps.set("WARPS." + warpName + ".itemProp", null);
+					Main.plugin.saveCustomConfig(Main.plugin.warps, Main.plugin.warpFile);
+					Material itemMat = Material.getMaterial(itemId);
+					String msgOr = MessageManager.getMessageYml().getString("Warp.EditItem");
+					String msg = msgOr.replaceAll("%warp%", warpName).replaceAll("%item%", itemMat.name());
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+					MenuManager.updateWarpInv();
+				} catch (NumberFormatException e) {
+					String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
+			} else {
+				try {
+					Integer itemId = Integer.valueOf(item.split(":")[0]);
+					Short damage = Short.valueOf(item.split(":")[1]);
+					Main.plugin.warps.set("WARPS." + warpName + ".item", itemId);
+					Main.plugin.warps.set("WARPS." + warpName + ".itemProp", damage);
+					Main.plugin.saveCustomConfig(Main.plugin.warps, Main.plugin.warpFile);
+					Material itemMat = Material.getMaterial(itemId);
+					String msgOr = MessageManager.getMessageYml().getString("Warp.EditItem");
+					String msg = msgOr.replaceAll("%warp%", warpName).replaceAll("%item%", itemMat.name());
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+					MenuManager.updateWarpInv();
+				} catch (NumberFormatException e) {
+					String msg = MessageManager.getMessageYml().getString("Notifications.NotInt");
+					sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
 			}
 		}
 	}

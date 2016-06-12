@@ -35,6 +35,7 @@ public class MenuManager {
                 if (slotNumber < warpInv.getSize()) {
                     Material itemDis = Material.GRASS;
                     Integer cost = 0;
+                    Short damage = 0;
                     if (Main.plugin.warps.contains("WARPS." + warpName + ".item")) {
                         Integer itemId = Main.plugin.warps.getInt("WARPS." + warpName + ".item");
                         itemDis = Material.getMaterial(itemId);
@@ -42,9 +43,12 @@ public class MenuManager {
                     if (Main.plugin.warps.contains("WARPS." + warpName + ".cost")) {
                         cost = Main.plugin.warps.getInt("WARPS." + warpName + ".cost");
                     }
+                    if (Main.plugin.warps.contains("WARPS." + warpName + ".itemProp")) {
+                        damage = Short.valueOf(Main.plugin.warps.getString("WARPS." + warpName + ".itemProp"));
+                    }
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.RED + "Warp Cost: " + cost);
-                    createItemDisplay(itemDis, warpInv, slotNumber, warpName, lore);
+                    createItemDisplay(itemDis, damage, warpInv, slotNumber, warpName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
                     if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -67,6 +71,7 @@ public class MenuManager {
                     if (slotNumber < warpInv.getSize()) {
                         Material itemDis = Material.GRASS;
                         Integer cost = 0;
+                        Short damage = 0;
                         if (Main.plugin.warps.contains("WARPS." + warpName + ".item")) {
                             Integer itemId = Main.plugin.warps.getInt("WARPS." + warpName + ".item");
                             itemDis = Material.getMaterial(itemId);
@@ -74,9 +79,12 @@ public class MenuManager {
                         if (Main.plugin.warps.contains("WARPS." + warpName + ".cost")) {
                             cost = Main.plugin.warps.getInt("WARPS." + warpName + ".cost");
                         }
+                        if (Main.plugin.warps.contains("WARPS." + warpName + ".itemProp")) {
+                            damage = Short.valueOf(Main.plugin.warps.getString("WARPS." + warpName + ".itemProp"));
+                        }
                         ArrayList<String> lore = new ArrayList<>();
                         lore.add(ChatColor.RED + "Warp Cost: " + cost);
-                        createItemDisplay(itemDis, warpInv, slotNumber, warpName, lore);
+                        createItemDisplay(itemDis, damage, warpInv, slotNumber, warpName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
                         if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -99,6 +107,7 @@ public class MenuManager {
                 if (slotNumber < hubInv.getSize()) {
                     Material itemDis = Material.GRASS;
                     Integer cost = 0;
+                    Short damage = 0;
                     if (Main.plugin.hubs.contains("HUBS." + hubName + ".item")) {
                         Integer itemId = Main.plugin.hubs.getInt("HUBS." + hubName + ".item");
                         itemDis = Material.getMaterial(itemId);
@@ -106,9 +115,12 @@ public class MenuManager {
                     if (Main.plugin.hubs.contains("HUBS." + hubName + ".cost")) {
                         cost = Main.plugin.hubs.getInt("HUBS." + hubName + ".cost");
                     }
+                    if (Main.plugin.hubs.contains("HUBS." + hubName + ".itemProp")) {
+                        damage = Short.valueOf(Main.plugin.hubs.getString("HUBS." + hubName + ".itemProp"));
+                    }
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.RED + "Hub Cost: " + cost);
-                    createItemDisplay(itemDis, hubInv, slotNumber, hubName, lore);
+                    createItemDisplay(itemDis, damage, hubInv, slotNumber, hubName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
                     if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -131,6 +143,7 @@ public class MenuManager {
                     if (slotNumber < hubInv.getSize()) {
                         Material itemDis = Material.GRASS;
                         Integer cost = 0;
+                        Short damage = 0;
                         if (Main.plugin.hubs.contains("HUBS." + hubName + ".item")) {
                             Integer itemId = Main.plugin.hubs.getInt("HUBS." + hubName + ".item");
                             itemDis = Material.getMaterial(itemId);
@@ -138,9 +151,12 @@ public class MenuManager {
                         if (Main.plugin.hubs.contains("HUBS." + hubName + ".cost")) {
                             cost = Main.plugin.hubs.getInt("HUBS." + hubName + ".cost");
                         }
+                        if (Main.plugin.hubs.contains("HUBS." + hubName + ".itemProp")) {
+                            damage = Short.valueOf(Main.plugin.hubs.getString("HUBS." + hubName + ".itemProp"));
+                        }
                         ArrayList<String> lore = new ArrayList<>();
                         lore.add(ChatColor.RED + "Hub Cost: " + cost);
-                        createItemDisplay(itemDis, hubInv, slotNumber, hubName, lore);
+                        createItemDisplay(itemDis, damage, hubInv, slotNumber, hubName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
                         if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -163,6 +179,7 @@ public class MenuManager {
                 if (slotNumber < lobbyInv.getSize()) {
                     Material itemDis = Material.GRASS;
                     Integer cost = 0;
+                    Short damage = 0;
                     if (Main.plugin.lobs.contains("LOBBIES." + lobbyName + ".item")) {
                         Integer itemId = Main.plugin.lobs.getInt("LOBBIES." + lobbyName + ".item");
                         itemDis = Material.getMaterial(itemId);
@@ -170,9 +187,12 @@ public class MenuManager {
                     if (Main.plugin.lobs.contains("LOBBIES." + lobbyName + ".cost")) {
                         cost = Main.plugin.lobs.getInt("LOBBIES." + lobbyName + ".cost");
                     }
+                    if (Main.plugin.lobs.contains("LOBBIES." + lobbyName + ".itemProp")) {
+                        damage = Short.valueOf(Main.plugin.lobs.getString("LOBBIES." + lobbyName + ".itemProp"));
+                    }
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.RED + "Lobby Cost: " + cost);
-                    createItemDisplay(itemDis, lobbyInv, slotNumber, lobbyName, lore);
+                    createItemDisplay(itemDis, damage, lobbyInv, slotNumber, lobbyName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
                     if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -195,6 +215,7 @@ public class MenuManager {
                     if (slotNumber < lobbyInv.getSize()) {
                         Material itemDis = Material.GRASS;
                         Integer cost = 0;
+                        Short damage = 0;
                         if (Main.plugin.lobs.contains("LOBBIES." + lobbyName + ".item")) {
                             Integer itemId = Main.plugin.lobs.getInt("LOBBIES." + lobbyName + ".item");
                             itemDis = Material.getMaterial(itemId);
@@ -202,9 +223,12 @@ public class MenuManager {
                         if (Main.plugin.lobs.contains("LOBBIES." + lobbyName + ".cost")) {
                             cost = Main.plugin.lobs.getInt("LOBBIES." + lobbyName + ".cost");
                         }
+                        if (Main.plugin.lobs.contains("LOBBIES." + lobbyName + ".itemProp")) {
+                            damage = Short.valueOf(Main.plugin.lobs.getString("LOBBIES." + lobbyName + ".itemProp"));
+                        }
                         ArrayList<String> lore = new ArrayList<>();
                         lore.add(ChatColor.RED + "Lobby Cost: " + cost);
-                        createItemDisplay(itemDis, lobbyInv, slotNumber, lobbyName, lore);
+                        createItemDisplay(itemDis, damage, lobbyInv, slotNumber, lobbyName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
                         if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -227,6 +251,7 @@ public class MenuManager {
                 if (slotNumber < spectateInv.getSize()) {
                     Material itemDis = Material.GRASS;
                     Integer cost = 0;
+                    Short damage = 0;
                     if (Main.plugin.spec.contains("SPECTATE." + locName + ".item")) {
                         Integer itemId = Main.plugin.spec.getInt("SPECTATE." + locName + ".item");
                         itemDis = Material.getMaterial(itemId);
@@ -234,9 +259,12 @@ public class MenuManager {
                     if (Main.plugin.spec.contains("SPECTATE." + locName + ".cost")) {
                         cost = Main.plugin.spec.getInt("SPECTATE." + locName + ".cost");
                     }
+                    if (Main.plugin.spec.contains("SPECTATE." + locName + ".itemProp")) {
+                        damage = Short.valueOf(Main.plugin.spec.getString("SPECTATE." + locName + ".itemProp"));
+                    }
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.RED + "Spectating Cost: " + cost);
-                    createItemDisplay(itemDis, spectateInv, slotNumber, locName, lore);
+                    createItemDisplay(itemDis, damage, spectateInv, slotNumber, locName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
                     if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -259,6 +287,7 @@ public class MenuManager {
                     if (slotNumber < spectateInv.getSize()) {
                         Material itemDis = Material.GRASS;
                         Integer cost = 0;
+                        Short damage = 0;
                         if (Main.plugin.spec.contains("SPECTATE." + locName + ".item")) {
                             Integer itemId = Main.plugin.spec.getInt("SPECTATE." + locName + ".item");
                             itemDis = Material.getMaterial(itemId);
@@ -266,9 +295,12 @@ public class MenuManager {
                         if (Main.plugin.spec.contains("SPECTATE." + locName + ".cost")) {
                             cost = Main.plugin.spec.getInt("SPECTATE." + locName + ".cost");
                         }
+                        if (Main.plugin.spec.contains("SPECTATE." + locName + ".itemProp")) {
+                            damage = Short.valueOf(Main.plugin.spec.getString("SPECTATE." + locName + ".itemProp"));
+                        }
                         ArrayList<String> lore = new ArrayList<>();
                         lore.add(ChatColor.RED + "Spectating Cost: " + cost);
-                        createItemDisplay(itemDis, spectateInv, slotNumber, locName, lore);
+                        createItemDisplay(itemDis, damage, spectateInv, slotNumber, locName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
                         if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -292,6 +324,7 @@ public class MenuManager {
                     World spawnWorld = Bukkit.getWorld(Main.plugin.spawns.getString("Spawns." + spawnName + ".world"));
                     Material itemDis = Material.GRASS;
                     Integer cost = 0;
+                    Short damage = 0;
                     Integer playerCount = 0;
                     if (Main.plugin.spawns.contains("Spawns." + spawnName + ".item")) {
                         Integer itemId = Main.plugin.spawns.getInt("Spawns." + spawnName + ".item");
@@ -300,13 +333,16 @@ public class MenuManager {
                     if (Main.plugin.spawns.contains("Spawns." + spawnName + ".cost")) {
                         cost = Main.plugin.spawns.getInt("Spawns." + spawnName + ".cost");
                     }
+                    if (Main.plugin.spawns.contains("Spawns." + spawnName + ".itemProp")) {
+                        damage = Short.valueOf(Main.plugin.spawns.getString("Spawns." + spawnName + ".itemProp"));
+                    }
                     if (!(spawnWorld == null)) {
                         playerCount = spawnWorld.getPlayers().size();
                     }
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.RED + "Spawn Cost: " + cost);
                     lore.add(ChatColor.GREEN + "Players: " + playerCount);
-                    createItemDisplay(itemDis, spawnInv, slotNumber, spawnName, lore);
+                    createItemDisplay(itemDis, damage, spawnInv, slotNumber, spawnName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
                     if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
@@ -318,37 +354,45 @@ public class MenuManager {
     }
     public static void updateSpawnInv() {
         if (Main.plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
-            spawnInv.clear();
-            int spawnCount = Main.plugin.lists.getStringList("Spawns").size();
-            if (sizeNeedsToBeChanged(spawnCount, spawnInv.getSize())) {
-                createSpawnInv();
-            }
-            if (Main.plugin.lists.contains("Spawns") && Main.plugin.spawns.contains("Spawns")) {
-                Integer slotNumber = 0;
-                for (String spawnName : Main.plugin.lists.getStringList("Spawns")) {
-                    if (slotNumber < spawnInv.getSize()) {
-                        World spawnWorld = Bukkit.getWorld(Main.plugin.spawns.getString("Spawns." + spawnName + ".world"));
-                        Integer playerCount = spawnWorld.getPlayers().size();
-                        Material itemDis = Material.GRASS;
-                        Integer cost = 0;
-                        if (Main.plugin.spawns.contains("Spawns." + spawnName + ".item")) {
-                            Integer itemId = Main.plugin.spawns.getInt("Spawns." + spawnName + ".item");
-                            itemDis = Material.getMaterial(itemId);
-                        }
-                        if (Main.plugin.spawns.contains("Spawns." + spawnName + ".cost")) {
-                            cost = Main.plugin.spawns.getInt("Spawns." + spawnName + ".cost");
-                        }
-                        ArrayList<String> lore = new ArrayList<>();
-                        lore.add(ChatColor.RED + "Spawn Cost: " + cost);
-                        lore.add(ChatColor.GREEN + "Players: " + playerCount);
-                        createItemDisplay(itemDis, spawnInv, slotNumber, spawnName, lore);
-                        slotNumber = slotNumber + 1;
-                    } else {
-                        if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
-                            Main.plugin.getLogger().info("<Debug> Out of room for GUI Menu! Pagination not currently supported!");
+            if (spawnInv != null) {
+                spawnInv.clear();
+                int spawnCount = Main.plugin.lists.getStringList("Spawns").size();
+                if (sizeNeedsToBeChanged(spawnCount, spawnInv.getSize())) {
+                    createSpawnInv();
+                }
+                if (Main.plugin.lists.contains("Spawns") && Main.plugin.spawns.contains("Spawns")) {
+                    Integer slotNumber = 0;
+                    for (String spawnName : Main.plugin.lists.getStringList("Spawns")) {
+                        if (slotNumber < spawnInv.getSize()) {
+                            World spawnWorld = Bukkit.getWorld(Main.plugin.spawns.getString("Spawns." + spawnName + ".world"));
+                            Integer playerCount = spawnWorld.getPlayers().size();
+                            Material itemDis = Material.GRASS;
+                            Integer cost = 0;
+                            Short damage = 0;
+                            if (Main.plugin.spawns.contains("Spawns." + spawnName + ".item")) {
+                                Integer itemId = Main.plugin.spawns.getInt("Spawns." + spawnName + ".item");
+                                itemDis = Material.getMaterial(itemId);
+                            }
+                            if (Main.plugin.spawns.contains("Spawns." + spawnName + ".cost")) {
+                                cost = Main.plugin.spawns.getInt("Spawns." + spawnName + ".cost");
+                            }
+                            if (Main.plugin.spawns.contains("Spawns." + spawnName + ".itemProp")) {
+                                damage = Short.valueOf(Main.plugin.spawns.getString("Spawns." + spawnName + ".itemProp"));
+                            }
+                            ArrayList<String> lore = new ArrayList<>();
+                            lore.add(ChatColor.RED + "Spawn Cost: " + cost);
+                            lore.add(ChatColor.GREEN + "Players: " + playerCount);
+                            createItemDisplay(itemDis, damage, spawnInv, slotNumber, spawnName, lore);
+                            slotNumber = slotNumber + 1;
+                        } else {
+                            if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
+                                Main.plugin.getLogger().info("<Debug> Out of room for GUI Menu! Pagination not currently supported!");
+                            }
                         }
                     }
                 }
+            } else {
+                createSpawnInv();
             }
         }
     }
@@ -361,19 +405,23 @@ public class MenuManager {
             UUID uuid = player.getUniqueId();
             if (Main.plugin.lists.contains("Homes." + uuid) && Main.plugin.homes.contains("HOMES." + uuid)) {
                 int homeCount = Main.plugin.lists.getStringList("Homes." + uuid).size();
-                Inventory homeInv = Bukkit.createInventory(null, getInvSize(homeCount), ChatColor.LIGHT_PURPLE + "Warp Menu");
+                Inventory homeInv = Bukkit.createInventory(null, getInvSize(homeCount), ChatColor.LIGHT_PURPLE + "Homes");
 
                 Integer slotNumber = 0;
                 for (String homeName : Main.plugin.lists.getStringList("Homes." + uuid)) {
                     if (slotNumber < 52) {
                         Material itemDis = Material.BED;
+                        Short damage = 0;
                         if (Main.plugin.homes.contains("HOMES." + uuid + "." + homeName + ".item")) {
                             Integer itemId = Main.plugin.homes.getInt("HOMES." + uuid + "." + homeName + ".item");
                             itemDis = Material.getMaterial(itemId);
                         }
+                        if (Main.plugin.homes.contains("HOMES." + uuid + "." + homeName + ".itemProp")) {
+                            damage = Short.valueOf(Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".itemProp"));
+                        }
                         ArrayList<String> lore = new ArrayList<>();
                         lore.add(ChatColor.RED + "World: " + Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".world"));
-                        createItemDisplay(itemDis, homeInv, slotNumber, homeName, lore);
+                        createItemDisplay(itemDis, damage, homeInv, slotNumber, homeName, lore);
                         slotNumber = slotNumber + 1;
                     }
                 }
@@ -402,13 +450,17 @@ public class MenuManager {
                     for (String homeName : Main.plugin.lists.getStringList("Homes." + uuid)) {
                         if (slotNumber < 52) {
                             Material itemDis = Material.BED;
+                            Short damage = 0;
                             if (Main.plugin.homes.contains("HOMES." + uuid + "." + homeName + ".item")) {
                                 Integer itemId = Main.plugin.homes.getInt("HOMES." + uuid + "." + homeName + ".item");
                                 itemDis = Material.getMaterial(itemId);
                             }
+                            if (Main.plugin.homes.contains("HOMES." + uuid + "." + homeName + ".itemProp")) {
+                                damage = Short.valueOf(Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".itemProp"));
+                            }
                             ArrayList<String> lore = new ArrayList<>();
                             lore.add(ChatColor.RED + "World: " + Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".world"));
-                            createItemDisplay(itemDis, homeInv, slotNumber, homeName, lore);
+                            createItemDisplay(itemDis, damage, homeInv, slotNumber, homeName, lore);
                             slotNumber = slotNumber + 1;
                         }
                     }
@@ -425,8 +477,8 @@ public class MenuManager {
         return homeInventories.get(uuid);
     }
 
-    private static void createItemDisplay(Material material, Inventory inv, int slot, String name, ArrayList<String> lore) {
-        ItemStack item = new ItemStack(material);
+    private static void createItemDisplay(Material material, Short damage, Inventory inv, int slot, String name, ArrayList<String> lore) {
+        ItemStack item = new ItemStack(material, 1, damage);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(name);
         meta.setLore(lore);
