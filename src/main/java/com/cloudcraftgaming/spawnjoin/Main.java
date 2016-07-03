@@ -88,7 +88,7 @@ public class Main extends JavaPlugin {
 		if (getConfig().getString("Inventory.Spectate.Use").equalsIgnoreCase("True")) {
 			MenuManager.createSpectateInv();
 		}
-		if (getConfig().getString("Inventory.Spawn.use").equalsIgnoreCase("True")) {
+		if (getConfig().getString("Inventory.Spawn.Use").equalsIgnoreCase("True")) {
 			MenuManager.createSpawnInv();
 		}
 
