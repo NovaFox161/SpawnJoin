@@ -1,4 +1,6 @@
-package com.cloudcraftgaming.spawnjoin;
+package com.cloudcraftgaming.spawnjoin.utils;
+
+import com.cloudcraftgaming.spawnjoin.Main;
 
 import java.io.File;
 import java.util.List;

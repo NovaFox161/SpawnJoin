@@ -1,4 +1,4 @@
-package com.cloudcraftgaming.spawnjoin;
+package com.cloudcraftgaming.spawnjoin.utils;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -6,6 +6,7 @@ import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import com.cloudcraftgaming.spawnjoin.Main;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

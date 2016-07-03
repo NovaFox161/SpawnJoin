@@ -1,7 +1,6 @@
 package com.cloudcraftgaming.spawnjoin.utils;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;

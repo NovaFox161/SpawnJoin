@@ -1,7 +1,7 @@
 package com.cloudcraftgaming.spawnjoin.spawn;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.MessageManager;
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.utils.DelayChecker;
 import com.cloudcraftgaming.spawnjoin.utils.LocationChecker;
 import com.cloudcraftgaming.spawnjoin.utils.Teleporter;

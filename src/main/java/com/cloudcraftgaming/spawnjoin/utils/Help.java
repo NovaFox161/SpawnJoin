@@ -1,5 +1,6 @@
-package com.cloudcraftgaming.spawnjoin;
+package com.cloudcraftgaming.spawnjoin.utils;
 
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 

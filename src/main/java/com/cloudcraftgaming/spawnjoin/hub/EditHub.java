@@ -1,7 +1,7 @@
 package com.cloudcraftgaming.spawnjoin.hub;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.MessageManager;
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.menu.MenuManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

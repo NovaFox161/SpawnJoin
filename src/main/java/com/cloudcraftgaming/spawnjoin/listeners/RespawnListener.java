@@ -1,7 +1,7 @@
 package com.cloudcraftgaming.spawnjoin.listeners;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.MessageManager;
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.utils.LocationChecker;
 import com.cloudcraftgaming.spawnjoin.utils.Teleporter;
 import org.bukkit.Bukkit;
