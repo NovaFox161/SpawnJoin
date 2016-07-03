@@ -1,9 +1,11 @@
 package com.cloudcraftgaming.spawnjoin.listeners;
 
 import com.cloudcraftgaming.spawnjoin.Main;
+import com.cloudcraftgaming.spawnjoin.MessageManager;
 import com.cloudcraftgaming.spawnjoin.utils.LocationChecker;
 import com.cloudcraftgaming.spawnjoin.utils.Teleporter;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -24,9 +26,19 @@ implements Listener {
 			String currentWorld = player.getWorld().getName();
 			String spawnWorld = LocationChecker.determineRespawnWorld(currentWorld);
 			if (LocationChecker.spawnOnFile(spawnWorld)) {
-				Teleporter.respawn(spawnWorld, player);
+				event.setRespawnLocation(Teleporter.getRespawnLocation(spawnWorld));
+
+				if (Main.plugin.getConfig().getString("NOTIFICATIONS.Respawn").equalsIgnoreCase("True")) {
+					String msg = MessageManager.getMessageYml().getString("Spawn.Respawn");
+					player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
 			} else {
-				Teleporter.respawn(Bukkit.getWorld(spawnWorld), player);
+				event.setRespawnLocation(Teleporter.getRespawnLocation(Bukkit.getWorld(spawnWorld)));
+
+				if (Main.plugin.getConfig().getString("NOTIFICATIONS.Respawn").equalsIgnoreCase("True")) {
+					String msg = MessageManager.getMessageYml().getString("Spawn.Respawn");
+					player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
+				}
 			}
 		}
 	}

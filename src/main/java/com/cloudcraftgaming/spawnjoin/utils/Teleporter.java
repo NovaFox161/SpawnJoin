@@ -305,4 +305,17 @@ public class Teleporter {
 			player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
 		}
 	}
+
+	public static Location getRespawnLocation(String spawnName) {
+		World w = Bukkit.getWorld(Main.plugin.spawns.getString("Spawns." + spawnName + ".world"));
+		Double x = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".x");
+		Double y = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".y");
+		Double z = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".z");
+		int ya = Main.plugin.spawns.getInt("Spawns." + spawnName + ".yaw");
+		int pi = Main.plugin.spawns.getInt("Spawns." + spawnName + ".pitch");
+		return new Location(w, x, y, z, ya, pi);
+	}
+	public static Location getRespawnLocation(World world) {
+		return world.getSpawnLocation();
+	}
 }

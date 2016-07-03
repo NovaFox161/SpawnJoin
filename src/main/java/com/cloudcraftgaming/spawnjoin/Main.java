@@ -89,6 +89,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new QuitListener(this), this);
 		getServer().getPluginManager().registerEvents(new SignListener(this), this);
 		getServer().getPluginManager().registerEvents(new InventoryListener(this), this);
+
 		if (getConfig().getString("Respawn.Use").equalsIgnoreCase("True")) {
 			getServer().getPluginManager().registerEvents(new RespawnListener(this), this);
 		}

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cloudcraftgaming</groupId>
   <artifactId>SpawnJoin</artifactId>
-  <version>5.1.2</version>
+  <version>5.1.3</version>
     <build>
       <plugins>
           <plugin>
