@@ -24,7 +24,7 @@ public class InvSpectate implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("InvSpectate")) {
             if (plugin.getConfig().getString("Commands.Spectate.Enabled").equalsIgnoreCase("True")) {
                 if (sender.hasPermission("SpawnJoin.use.invspectate")
-                        && plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+                        && plugin.getConfig().getString("Inventory.Spectate.Use").equalsIgnoreCase("True")) {
                     if (sender instanceof Player) {
                         if (MenuManager.spectateInv != null) {
                             Player player = (Player) sender;

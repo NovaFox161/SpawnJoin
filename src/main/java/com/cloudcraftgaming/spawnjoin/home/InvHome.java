@@ -20,7 +20,8 @@ public class InvHome implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("InvHome")) {
-            if (plugin.getConfig().getString("Commands.Home.Enabled").equalsIgnoreCase("True") && plugin.getConfig().getBoolean("Inventory.Use")) {
+            if (plugin.getConfig().getString("Commands.Home.Enabled").equalsIgnoreCase("True")
+                    && plugin.getConfig().getBoolean("Inventory.Home.Use")) {
                 if (sender.hasPermission("SpawnJoin.use.invhome")) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;

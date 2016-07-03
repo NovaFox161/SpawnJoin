@@ -23,7 +23,7 @@ public class InvLobby implements CommandExecutor {
         String perm = MessageManager.getNoPermMessage();
         if (cmd.getName().equalsIgnoreCase("InvLobby")) {
             if (plugin.getConfig().getString("Commands.Lobby.Enabled").equalsIgnoreCase("True")
-                    && plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+                    && plugin.getConfig().getString("Inventory.Lobby.Use").equalsIgnoreCase("True")) {
                 if (sender.hasPermission("SpawnJoin.use.invlobby")) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;

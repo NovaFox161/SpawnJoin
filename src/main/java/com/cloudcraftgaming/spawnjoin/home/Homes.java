@@ -40,7 +40,7 @@ implements CommandExecutor {
 								String msg = MessageManager.getMessageYml().getString("Home.NoSet");
 								sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
 							} else {
-								if (plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")
+								if (plugin.getConfig().getString("Inventory.Home.Use").equalsIgnoreCase("True")
 										&& plugin.getConfig().getString("Inventory.ListCommandOverride").equalsIgnoreCase("True")) {
 									MenuManager.updatePlayerHomeInv(player);
 									player.openInventory(MenuManager.getHomeInventory(player));

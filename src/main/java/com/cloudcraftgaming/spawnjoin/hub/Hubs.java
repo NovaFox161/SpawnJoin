@@ -35,7 +35,7 @@ public class Hubs implements CommandExecutor {
 							String hubHeading = MessageManager.getMessageYml().getString("Hub.HubsHeading");
 							sender.sendMessage(ChatColor.translateAlternateColorCodes('&', hubHeading));
 							sender.sendMessage(ChatColor.RED + replaced);
-						} else if (plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")
+						} else if (plugin.getConfig().getString("Inventory.Hub.Use").equalsIgnoreCase("True")
 								&& plugin.getConfig().getString("Inventory.ListCommandOverride").equalsIgnoreCase("True")) {
 							Player player = (Player) sender;
 							player.openInventory(MenuManager.hubInv);

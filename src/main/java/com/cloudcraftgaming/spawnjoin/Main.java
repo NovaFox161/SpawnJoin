@@ -44,7 +44,7 @@ public class Main extends JavaPlugin {
 	public FileConfiguration homeSettings = (YamlConfiguration.loadConfiguration(homeSettingsFile));
 	
 	public UpdateChecker updateChecker;
-	public String conVersion = "5.0";
+	public String conVersion = "5.1";
 	public String listVersion = "1.0";
 	public String hubVersion = "1.0";
 	public String lobVersion = "1.0";
@@ -75,14 +75,24 @@ public class Main extends JavaPlugin {
 
 		FileManager.fileVersionCheck();
 
-		if (getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+		//Inventory menu stuffs
+		if (getConfig().getString("Inventory.Warp.Use").equalsIgnoreCase("True")) {
 			MenuManager.createWarpInv();
+		}
+		if (getConfig().getString("Inventory.Hub.Use").equalsIgnoreCase("True")) {
 			MenuManager.createHubInv();
+		}
+		if (getConfig().getString("Inventory.Lobby.Use").equalsIgnoreCase("True")) {
 			MenuManager.createLobbyInv();
+		}
+		if (getConfig().getString("Inventory.Spectate.Use").equalsIgnoreCase("True")) {
 			MenuManager.createSpectateInv();
+		}
+		if (getConfig().getString("Inventory.Spawn.use").equalsIgnoreCase("True")) {
 			MenuManager.createSpawnInv();
 		}
-		
+
+		//Commands and event registering
 		getLogger().info("Registering SpawnJoin event listeners...");
 		getServer().getPluginManager().registerEvents(new JoinListener(this), this);
 		getServer().getPluginManager().registerEvents(new QuitListener(this), this);

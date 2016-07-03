@@ -23,7 +23,7 @@ public class InvWarp implements CommandExecutor {
         String perm = MessageManager.getNoPermMessage();
         if (cmd.getName().equalsIgnoreCase("InvWarp")) {
             if (plugin.getConfig().getString("Commands.Warp.Enabled").equalsIgnoreCase("True")
-                    && plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+                    && plugin.getConfig().getString("Inventory.Warp.Use").equalsIgnoreCase("True")) {
                 if (sender.hasPermission("SpawnJoin.use.invwarp")) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;

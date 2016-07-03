@@ -29,7 +29,8 @@ public class MenuManager {
     public static void createWarpInv() {
         if (Main.plugin.lists.contains("Warps") && Main.plugin.warps.contains("WARPS")) {
             int warpCount = Main.plugin.lists.getStringList("Warps").size();
-            warpInv = Bukkit.createInventory(null, getInvSize(warpCount), ChatColor.LIGHT_PURPLE + "Warp Menu");
+            String warpNameOr = Main.plugin.getConfig().getString("Inventory.Warp.Name");
+            warpInv = Bukkit.createInventory(null, getInvSize(warpCount), ChatColor.translateAlternateColorCodes('&', warpNameOr));
             Integer slotNumber = 0;
             for (String warpName : Main.plugin.lists.getStringList("Warps")) {
                 if (slotNumber < warpInv.getSize()) {
@@ -47,7 +48,9 @@ public class MenuManager {
                         damage = Short.valueOf(Main.plugin.warps.getString("WARPS." + warpName + ".itemProp"));
                     }
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.RED + "Warp Cost: " + cost);
+                    if (Main.plugin.getConfig().getString("Inventory.Warp.ShowCost").equalsIgnoreCase("True")) {
+                        lore.add(ChatColor.RED + "Warp Cost: " + cost);
+                    }
                     createItemDisplay(itemDis, damage, warpInv, slotNumber, warpName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
@@ -83,7 +86,9 @@ public class MenuManager {
                             damage = Short.valueOf(Main.plugin.warps.getString("WARPS." + warpName + ".itemProp"));
                         }
                         ArrayList<String> lore = new ArrayList<>();
-                        lore.add(ChatColor.RED + "Warp Cost: " + cost);
+                        if (Main.plugin.getConfig().getString("Inventory.Warp.ShowCost").equalsIgnoreCase("True")) {
+                            lore.add(ChatColor.RED + "Warp Cost: " + cost);
+                        }
                         createItemDisplay(itemDis, damage, warpInv, slotNumber, warpName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
@@ -101,7 +106,8 @@ public class MenuManager {
     public static void createHubInv() {
         if (Main.plugin.lists.contains("Hubs") && Main.plugin.hubs.contains("HUBS")) {
             int hubCount = Main.plugin.lists.getStringList("Hubs").size();
-            hubInv = Bukkit.createInventory(null, getInvSize(hubCount), ChatColor.LIGHT_PURPLE + "Hub Menu");
+            String nameOr = Main.plugin.getConfig().getString("Inventory.Hub.Name");
+            hubInv = Bukkit.createInventory(null, getInvSize(hubCount), ChatColor.translateAlternateColorCodes('&', nameOr));
             Integer slotNumber = 0;
             for (String hubName : Main.plugin.lists.getStringList("Hubs")) {
                 if (slotNumber < hubInv.getSize()) {
@@ -119,7 +125,9 @@ public class MenuManager {
                         damage = Short.valueOf(Main.plugin.hubs.getString("HUBS." + hubName + ".itemProp"));
                     }
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.RED + "Hub Cost: " + cost);
+                    if (Main.plugin.getConfig().getString("Inventory.Hub.ShowCost").equalsIgnoreCase("True")) {
+                        lore.add(ChatColor.RED + "Hub Cost: " + cost);
+                    }
                     createItemDisplay(itemDis, damage, hubInv, slotNumber, hubName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
@@ -155,7 +163,9 @@ public class MenuManager {
                             damage = Short.valueOf(Main.plugin.hubs.getString("HUBS." + hubName + ".itemProp"));
                         }
                         ArrayList<String> lore = new ArrayList<>();
-                        lore.add(ChatColor.RED + "Hub Cost: " + cost);
+                        if (Main.plugin.getConfig().getString("Inventory.Hub.ShowCost").equalsIgnoreCase("True")) {
+                            lore.add(ChatColor.RED + "Hub Cost: " + cost);
+                        }
                         createItemDisplay(itemDis, damage, hubInv, slotNumber, hubName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
@@ -173,7 +183,8 @@ public class MenuManager {
     public static void createLobbyInv() {
         if (Main.plugin.lists.contains("Lobbies") && Main.plugin.lobs.contains("LOBBIES")) {
             int lobbyCount = Main.plugin.lists.getStringList("Lobbies").size();
-            lobbyInv = Bukkit.createInventory(null, getInvSize(lobbyCount), ChatColor.LIGHT_PURPLE + "Lobby Menu");
+            String nameOr = Main.plugin.getConfig().getString("Inventory.Lobby.Name");
+            lobbyInv = Bukkit.createInventory(null, getInvSize(lobbyCount), ChatColor.translateAlternateColorCodes('&', nameOr));
             Integer slotNumber = 0;
             for (String lobbyName : Main.plugin.lists.getStringList("Lobbies")) {
                 if (slotNumber < lobbyInv.getSize()) {
@@ -191,7 +202,9 @@ public class MenuManager {
                         damage = Short.valueOf(Main.plugin.lobs.getString("LOBBIES." + lobbyName + ".itemProp"));
                     }
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.RED + "Lobby Cost: " + cost);
+                    if (Main.plugin.getConfig().getString("Inventory.Lobby.ShowCost").equalsIgnoreCase("True")) {
+                        lore.add(ChatColor.RED + "Lobby Cost: " + cost);
+                    }
                     createItemDisplay(itemDis, damage, lobbyInv, slotNumber, lobbyName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
@@ -227,7 +240,9 @@ public class MenuManager {
                             damage = Short.valueOf(Main.plugin.lobs.getString("LOBBIES." + lobbyName + ".itemProp"));
                         }
                         ArrayList<String> lore = new ArrayList<>();
-                        lore.add(ChatColor.RED + "Lobby Cost: " + cost);
+                        if (Main.plugin.getConfig().getString("Inventory.Lobby.ShowCost").equalsIgnoreCase("True")) {
+                            lore.add(ChatColor.RED + "Lobby Cost: " + cost);
+                        }
                         createItemDisplay(itemDis, damage, lobbyInv, slotNumber, lobbyName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
@@ -245,7 +260,8 @@ public class MenuManager {
     public static void createSpectateInv() {
         if (Main.plugin.lists.contains("Spectate") && Main.plugin.spec.contains("SPECTATE")) {
             int locCount = Main.plugin.lists.getStringList("Spectate").size();
-            spectateInv = Bukkit.createInventory(null, getInvSize(locCount), ChatColor.LIGHT_PURPLE + "Spectating Menu");
+            String nameOr = Main.plugin.getConfig().getString("Inventory.Spectate.Name");
+            spectateInv = Bukkit.createInventory(null, getInvSize(locCount), ChatColor.translateAlternateColorCodes('&', nameOr));
             Integer slotNumber = 0;
             for (String locName : Main.plugin.lists.getStringList("Spectate")) {
                 if (slotNumber < spectateInv.getSize()) {
@@ -263,7 +279,9 @@ public class MenuManager {
                         damage = Short.valueOf(Main.plugin.spec.getString("SPECTATE." + locName + ".itemProp"));
                     }
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.RED + "Spectating Cost: " + cost);
+                    if (Main.plugin.getConfig().getString("Inventory.Spectate.ShowCost").equalsIgnoreCase("True")) {
+                        lore.add(ChatColor.RED + "Spectating Cost: " + cost);
+                    }
                     createItemDisplay(itemDis, damage, spectateInv, slotNumber, locName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
@@ -299,7 +317,9 @@ public class MenuManager {
                             damage = Short.valueOf(Main.plugin.spec.getString("SPECTATE." + locName + ".itemProp"));
                         }
                         ArrayList<String> lore = new ArrayList<>();
-                        lore.add(ChatColor.RED + "Spectating Cost: " + cost);
+                        if (Main.plugin.getConfig().getString("Inventory.Spectate.ShowCost").equalsIgnoreCase("True")) {
+                            lore.add(ChatColor.RED + "Spectating Cost: " + cost);
+                        }
                         createItemDisplay(itemDis, damage, spectateInv, slotNumber, locName, lore);
                         slotNumber = slotNumber + 1;
                     } else {
@@ -317,7 +337,8 @@ public class MenuManager {
     public static void createSpawnInv() {
         if (Main.plugin.lists.contains("Spawns") && Main.plugin.spawns.contains("Spawns")) {
             int spawnCount = Main.plugin.lists.getStringList("Spawns").size();
-            spawnInv = Bukkit.createInventory(null, getInvSize(spawnCount), ChatColor.LIGHT_PURPLE + "Spawn Menu");
+            String nameOr = Main.plugin.getConfig().getString("Inventory.Spawn.Name");
+            spawnInv = Bukkit.createInventory(null, getInvSize(spawnCount), ChatColor.translateAlternateColorCodes('&', nameOr));
             Integer slotNumber = 0;
             for (String spawnName : Main.plugin.lists.getStringList("Spawns")) {
                 if (slotNumber < spawnInv.getSize()) {
@@ -340,8 +361,12 @@ public class MenuManager {
                         playerCount = spawnWorld.getPlayers().size();
                     }
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.RED + "Spawn Cost: " + cost);
-                    lore.add(ChatColor.GREEN + "Players: " + playerCount);
+                    if (Main.plugin.getConfig().getString("Inventory.Spawn.ShowCost").equalsIgnoreCase("True")) {
+                        lore.add(ChatColor.RED + "Spawn Cost: " + cost);
+                    }
+                    if (Main.plugin.getConfig().getString("Inventory.Spawn.ShowPlayerCount").equalsIgnoreCase("True")) {
+                        lore.add(ChatColor.GREEN + "Players: " + playerCount);
+                    }
                     createItemDisplay(itemDis, damage, spawnInv, slotNumber, spawnName, lore);
                     slotNumber = slotNumber + 1;
                 } else {
@@ -380,8 +405,12 @@ public class MenuManager {
                                 damage = Short.valueOf(Main.plugin.spawns.getString("Spawns." + spawnName + ".itemProp"));
                             }
                             ArrayList<String> lore = new ArrayList<>();
-                            lore.add(ChatColor.RED + "Spawn Cost: " + cost);
-                            lore.add(ChatColor.GREEN + "Players: " + playerCount);
+                            if (Main.plugin.getConfig().getString("Inventory.Spawn.ShowCost").equalsIgnoreCase("True")) {
+                                lore.add(ChatColor.RED + "Spawn Cost: " + cost);
+                            }
+                            if (Main.plugin.getConfig().getString("Inventory.Spawn.ShowPlayerCount").equalsIgnoreCase("True")) {
+                                lore.add(ChatColor.GREEN + "Players: " + playerCount);
+                            }
                             createItemDisplay(itemDis, damage, spawnInv, slotNumber, spawnName, lore);
                             slotNumber = slotNumber + 1;
                         } else {
@@ -405,7 +434,8 @@ public class MenuManager {
             UUID uuid = player.getUniqueId();
             if (Main.plugin.lists.contains("Homes." + uuid) && Main.plugin.homes.contains("HOMES." + uuid)) {
                 int homeCount = Main.plugin.lists.getStringList("Homes." + uuid).size();
-                Inventory homeInv = Bukkit.createInventory(null, getInvSize(homeCount), ChatColor.LIGHT_PURPLE + "Homes");
+                String nameOr = Main.plugin.getConfig().getString("Inventory.Home.Name");
+                Inventory homeInv = Bukkit.createInventory(null, getInvSize(homeCount), ChatColor.translateAlternateColorCodes('&', nameOr));
 
                 Integer slotNumber = 0;
                 for (String homeName : Main.plugin.lists.getStringList("Homes." + uuid)) {
@@ -420,7 +450,9 @@ public class MenuManager {
                             damage = Short.valueOf(Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".itemProp"));
                         }
                         ArrayList<String> lore = new ArrayList<>();
-                        lore.add(ChatColor.RED + "World: " + Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".world"));
+                        if (Main.plugin.getConfig().getString("Inventory.Home.ShowWorld").equalsIgnoreCase("True")) {
+                            lore.add(ChatColor.RED + "World: " + Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".world"));
+                        }
                         createItemDisplay(itemDis, damage, homeInv, slotNumber, homeName, lore);
                         slotNumber = slotNumber + 1;
                     }
@@ -459,7 +491,9 @@ public class MenuManager {
                                 damage = Short.valueOf(Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".itemProp"));
                             }
                             ArrayList<String> lore = new ArrayList<>();
-                            lore.add(ChatColor.RED + "World: " + Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".world"));
+                            if (Main.plugin.getConfig().getString("Inventory.Home.ShowWorld").equalsIgnoreCase("True")) {
+                                lore.add(ChatColor.RED + "World: " + Main.plugin.homes.getString("HOMES." + uuid + "." + homeName + ".world"));
+                            }
                             createItemDisplay(itemDis, damage, homeInv, slotNumber, homeName, lore);
                             slotNumber = slotNumber + 1;
                         }

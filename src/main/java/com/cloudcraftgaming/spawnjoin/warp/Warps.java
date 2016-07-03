@@ -37,7 +37,7 @@ implements CommandExecutor
 							sender.sendMessage(ChatColor.translateAlternateColorCodes('&', heading));
 							sender.sendMessage(ChatColor.RED + replaced);
 						} else {
-							if (plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")
+							if (plugin.getConfig().getString("Inventory.Warp.Use").equalsIgnoreCase("True")
 									&& plugin.getConfig().getString("Inventory.ListCommandOverride").equalsIgnoreCase("True")) {
 								Player player = (Player) sender;
 								player.openInventory(MenuManager.warpInv);

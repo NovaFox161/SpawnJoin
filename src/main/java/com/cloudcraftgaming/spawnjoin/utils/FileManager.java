@@ -41,7 +41,27 @@ public class FileManager {
 			Main.plugin.getConfig().addDefault("Commands.Home.GlobalLimit.Limit", 3);
 			Main.plugin.getConfig().addDefault("Commands.Sign.Enabled", true);
 
-			Main.plugin.getConfig().addDefault("Inventory.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Warp.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Warp.Name", "&6Warp Selector");
+			Main.plugin.getConfig().addDefault("Inventory.Warp.ShowCost", true);
+			Main.plugin.getConfig().addDefault("Inventory.Hub.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Hub.Name", "&6Hub Selector");
+			Main.plugin.getConfig().addDefault("Inventory.Hub.ShowCost", true);
+			Main.plugin.getConfig().addDefault("Inventory.Lobby.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Lobby.Name", "&6Lobby Selector");
+			Main.plugin.getConfig().addDefault("Inventory.Lobby.ShowCost", true);
+			Main.plugin.getConfig().addDefault("Inventory.Spectate.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Spectate.Name", "&6Spectate Location Selector");
+			Main.plugin.getConfig().addDefault("Inventory.Spectate.ShowCost", true);
+			Main.plugin.getConfig().addDefault("Inventory.Spawn.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Spawn.Name", "&6Spawn Selector");
+			Main.plugin.getConfig().addDefault("Inventory.Spawn.ShowCost", true);
+			Main.plugin.getConfig().addDefault("Inventory.Spawn.ShowPlayerCount", true);
+			Main.plugin.getConfig().addDefault("Inventory.Home.Use", true);
+			Main.plugin.getConfig().addDefault("Inventory.Home.Name", "&6Your Home Selector");
+			Main.plugin.getConfig().addDefault("Inventory.Home.ShowWorld", true);
+
+
 			Main.plugin.getConfig().addDefault("Inventory.ListCommandOverride", true);
 
 			

@@ -23,7 +23,7 @@ public class InvSpawn implements CommandExecutor {
         String perm = MessageManager.getNoPermMessage();
         if (cmd.getName().equalsIgnoreCase("InvSpawn")) {
             if (plugin.getConfig().getString("Commands.Spawn.Enabled").equalsIgnoreCase("True")
-                    && plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+                    && plugin.getConfig().getString("Inventory.Spawn.Use").equalsIgnoreCase("True")) {
                 if (sender.hasPermission("SpawnJoin.use.invspawn")) {
                     if (sender instanceof Player) {
                         MenuManager.updateSpawnInv();
