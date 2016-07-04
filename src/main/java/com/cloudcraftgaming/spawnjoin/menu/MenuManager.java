@@ -430,7 +430,7 @@ public class MenuManager {
         return homeInventories.containsKey(player.getUniqueId());
     }
     private static void createPlayerHomeInv(Player player) {
-        if (Main.plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+        if (Main.plugin.getConfig().getString("Inventory.Home.Use").equalsIgnoreCase("True")) {
             UUID uuid = player.getUniqueId();
             if (Main.plugin.lists.contains("Homes." + uuid) && Main.plugin.homes.contains("HOMES." + uuid)) {
                 int homeCount = Main.plugin.lists.getStringList("Homes." + uuid).size();
@@ -468,7 +468,7 @@ public class MenuManager {
         }
     }
     public static void updatePlayerHomeInv(Player player) {
-        if (Main.plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+        if (Main.plugin.getConfig().getString("Inventory.Home.Use").equalsIgnoreCase("True")) {
             if (hasHomeInventoryMenu(player)) {
                 UUID uuid = player.getUniqueId();
                 Inventory homeInv = homeInventories.get(uuid);
