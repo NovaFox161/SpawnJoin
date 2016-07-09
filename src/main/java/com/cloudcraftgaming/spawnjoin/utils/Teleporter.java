@@ -5,6 +5,7 @@ import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -272,39 +273,6 @@ public class Teleporter {
 		}
 	}
 
-	/**
-	 * Used to send players to the respawn location. Uses spawn on file.
-	 * @param spawnName Name of spawn on file or spawn to be used.
-	 * @param player Player that is being teleported to the spawn.
-     */
-	public static void respawn(String spawnName, Player player) {
-		World w = Bukkit.getWorld(Main.plugin.spawns.getString("Spawns." + spawnName + ".world"));
-		Double x = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".x");
-		Double y = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".y");
-		Double z = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".z");
-		int ya = Main.plugin.spawns.getInt("Spawns." + spawnName + ".yaw");
-		int pi = Main.plugin.spawns.getInt("Spawns." + spawnName + ".pitch");
-		Location spawnLoc = new Location(w, x, y, z, ya, pi);
-		player.teleport(spawnLoc);
-		if (Main.plugin.getConfig().getString("NOTIFICATIONS.Respawn").equalsIgnoreCase("True")) {
-			String msg = MessageManager.getMessageYml().getString("Spawn.Respawn");
-			player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
-		}
-	}
-	/**
-	 * Used to send players to the respawn location. Does not use spawn on file.
-	 * @param world World player is teleported to.
-	 * @param player Player that is being teleported to spawn.
-     */
-	public static void respawn(World world, Player player) {
-		Location spawnLoc = world.getSpawnLocation();
-		player.teleport(spawnLoc);
-		if (Main.plugin.getConfig().getString("NOTIFICATIONS.Respawn").equalsIgnoreCase("True")) {
-			String msg = MessageManager.getMessageYml().getString("Spawn.Respawn");
-			player.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
-		}
-	}
-
 	public static Location getRespawnLocation(String spawnName) {
 		World w = Bukkit.getWorld(Main.plugin.spawns.getString("Spawns." + spawnName + ".world"));
 		Double x = Main.plugin.spawns.getDouble("Spawns." + spawnName + ".x");
@@ -316,5 +284,47 @@ public class Teleporter {
 	}
 	public static Location getRespawnLocation(World world) {
 		return world.getSpawnLocation();
+	}
+
+
+	public static Boolean teleportOnJoin(String cmd, Player player) {
+		if (Main.plugin.getConfig().getString("Join.AllowBypass").equalsIgnoreCase("True")) {
+			if (player.hasPermission("SpawnJoin.bypass.join")) {
+				return false;
+			}
+		}
+		if (Main.plugin.getConfig().getString("Join.Worlds.All").equalsIgnoreCase("False")) {
+			List<String> worlds = Main.plugin.getConfig().getStringList("Join.Worlds.List");
+			if (!worlds.contains(player.getWorld().getName())) {
+				return false;
+			}
+		}
+		if (cmd.equalsIgnoreCase("Hub")) {
+			String hub = Main.plugin.getConfig().getString("Join.Location.Hub");
+			if (LocationChecker.hubExists(hub)) {
+				Teleporter.hub(hub, player);
+				return true;
+			}
+		} else if (cmd.equalsIgnoreCase("Lobby")) {
+			String lobby = Main.plugin.getConfig().getString("Join.Location.Lobby");
+			if (LocationChecker.lobbyExists(lobby)) {
+				Teleporter.lobby(lobby, player);
+				return true;
+			}
+		} else if (cmd.equalsIgnoreCase("Warp")) {
+			String warp = Main.plugin.getConfig().getString("Join.Location.Warp");
+			if (LocationChecker.warpExists(warp)) {
+				Teleporter.warp(warp, player);
+				return true;
+			}
+		} else if (cmd.equalsIgnoreCase("Spawn")) {
+			String worldName = Main.plugin.getConfig().getString("Join.Location.Spawn");
+			if (LocationChecker.spawnExists(worldName)) {
+				if (LocationChecker.spawnOnFile(worldName)) {
+					Teleporter.spawn(worldName, player);
+				}
+			}
+		}
+		return false;
 	}
 }

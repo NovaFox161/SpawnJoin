@@ -2,9 +2,8 @@ package com.cloudcraftgaming.spawnjoin.listeners;
 
 import com.cloudcraftgaming.spawnjoin.Main;
 import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
-import com.cloudcraftgaming.spawnjoin.utils.UpdateChecker;
-import com.cloudcraftgaming.spawnjoin.utils.LocationChecker;
 import com.cloudcraftgaming.spawnjoin.utils.Teleporter;
+import com.cloudcraftgaming.spawnjoin.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -20,72 +19,13 @@ implements Listener {
 	public JoinListener(Main instance) {
 		plugin = instance;
 	}
-	Main plugin;
+	private Main plugin;
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void spawnJoinTeleport(PlayerJoinEvent event) {
-		String prefix = MessageManager.getPrefix();
 		Player joiner = event.getPlayer();
 		if (plugin.getConfig().getString("Join.Enabled").equalsIgnoreCase("True")) {
-			if (joiner.hasPermission("SpawnJoin.bypass.join") && plugin.getConfig().getString("Join.AllowBypass").equalsIgnoreCase("True")) {
-				if (plugin.getConfig().getString("NOTIFICATIONS.SpawnJoin").equalsIgnoreCase("True")) {
-					String msg = MessageManager.getMessageYml().getString("Join.Bypass");
-					joiner.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
-				}
-				if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
-					Main.plugin.getLogger().info("<Debug> " + joiner.getName()
-							+ " has bypassed SpawnJoin auto teleportation due to: permissions.");
-				}
-			} else {
-				String cmd = Main.plugin.getConfig().getString("Join.Command");
-				if (cmd.equalsIgnoreCase("Hub")) {
-					String hub = Main.plugin.getConfig().getString("Join.Location.Hub");
-					if (LocationChecker.hubExists(hub)) {
-						Teleporter.hub(hub, joiner);
-					} else {
-						if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("true")) {
-							Main.plugin.getLogger().info("<Debug> " + joiner.getName() 
-									+ " could not be auto teleported on join because the location specified does not exist!.");
-						}
-					}
-				} else if (cmd.equalsIgnoreCase("Lobby")) {
-					String lobby = Main.plugin.getConfig().getString("Join.Location.Lobby");
-					if (LocationChecker.lobbyExists(lobby)) {
-						Teleporter.lobby(lobby, joiner);
-					} else if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("true")) {
-						Main.plugin.getLogger().info("<Debug> " + joiner.getName()
-								+ " could not be auto teleported on join because the location specified does not exist!.");
-					}
-				} else if (cmd.equalsIgnoreCase("Warp")) {
-					String warp = Main.plugin.getConfig().getString("Join.Location.Warp");
-					if (LocationChecker.warpExists(warp)) {
-						Teleporter.warp(warp, joiner);
-					} else {
-						if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("true")) {
-							Main.plugin.getLogger().info("<Debug> " + joiner.getName() 
-									+ " could not be auto teleported on join because the location specified does not exist!.");
-						}
-					}
-				} else if (cmd.equalsIgnoreCase("Spawn")) {
-					String worldName = Main.plugin.getConfig().getString("Join.Location.Spawn");
-					if (LocationChecker.spawnExists(worldName)) {
-						if (LocationChecker.spawnOnFile(worldName)) {
-							Teleporter.spawn(worldName, joiner);
-						} else {
-							Teleporter.spawn(Bukkit.getWorld(worldName), joiner);
-						}
-					} else {
-						if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("true")) {
-							Main.plugin.getLogger().info("<Debug> " + joiner.getName() 
-									+ " could not be auto teleported on join because the location specified does not exist!.");
-						}
-					}
-				} else {
-					if (Main.plugin.getConfig().getString("Debug").equalsIgnoreCase("True")) {
-						Main.plugin.getLogger().info("<Debug> " + joiner.getName() +
-								" has bypassed SpawnJoin auto teleportation due to: Invalid location setting in config.");
-					}
-				}
-			}
+			String cmd = Main.plugin.getConfig().getString("Join.Command");
+			Teleporter.teleportOnJoin(cmd, joiner);
 		}
 	}
 	@EventHandler(priority = EventPriority.MONITOR)

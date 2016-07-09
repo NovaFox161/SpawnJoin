@@ -67,6 +67,11 @@ public class FileManager {
 			
 			Main.plugin.getConfig().addDefault("Join.Enabled", true);
 			Main.plugin.getConfig().addDefault("Join.AllowBypass", true);
+			Main.plugin.getConfig().addDefault("Join.Worlds.All", true);
+			List<String> joinWorldsList = Main.plugin.getConfig().getStringList("Join.Worlds.List");
+			joinWorldsList.add("minigames");
+			joinWorldsList.add("exampleWorld1");
+			Main.plugin.getConfig().set("Join.Worlds.List", joinWorldsList);
 			Main.plugin.getConfig().addDefault("Join.Command", "Hub");
 			Main.plugin.getConfig().addDefault("Join.Location.Hub", "ExampleHub");
 			Main.plugin.getConfig().addDefault("Join.Location.Lobby", "ExampleLobby");
@@ -74,10 +79,10 @@ public class FileManager {
 			Main.plugin.getConfig().addDefault("Join.Location.Spawn", "ExampleWorldName");
 			
 			Main.plugin.getConfig().addDefault("TPR.Max", 1000);
-			List<String> list = Main.plugin.getConfig().getStringList("TPR.Worlds");
-			list.add("world");
-			list.add("ExampleWorld1");
-			Main.plugin.getConfig().set("TPR.Worlds", list);
+			List<String> tprWorldsList = Main.plugin.getConfig().getStringList("TPR.Worlds");
+			tprWorldsList.add("world");
+			tprWorldsList.add("ExampleWorld1");
+			Main.plugin.getConfig().set("TPR.Worlds", tprWorldsList);
 			
 			Main.plugin.getConfig().addDefault("Spawn.PerWorld", true);
 			Main.plugin.getConfig().addDefault("Spawn.Save to File", true);

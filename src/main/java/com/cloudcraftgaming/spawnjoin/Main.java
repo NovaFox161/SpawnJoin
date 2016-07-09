@@ -44,7 +44,7 @@ public class Main extends JavaPlugin {
 	public FileConfiguration homeSettings = (YamlConfiguration.loadConfiguration(homeSettingsFile));
 	
 	public UpdateChecker updateChecker;
-	public String conVersion = "5.1";
+	public String conVersion = "5.2";
 	public String listVersion = "1.0";
 	public String hubVersion = "1.0";
 	public String lobVersion = "1.0";
