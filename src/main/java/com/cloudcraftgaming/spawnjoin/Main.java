@@ -58,12 +58,7 @@ public class Main extends JavaPlugin {
 	public String signDataVersion = "1.0";
 	public String homeSettingsVersion = "1.0";
 
-	public void onDisable() {
-		if (!(Tpr.cooldown.isEmpty())) {
-			this.getLogger().info(MessageManager.getMessageYml().getString("Notifications.ClearTprCooldowns"));
-			Tpr.cooldown.clear();
-		}
-	}
+	public void onDisable() {}
 	
 	public void onEnable() {
 		plugin = this;
