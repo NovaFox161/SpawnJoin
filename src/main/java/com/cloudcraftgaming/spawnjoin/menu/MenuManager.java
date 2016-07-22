@@ -378,7 +378,7 @@ public class MenuManager {
         }
     }
     public static void updateSpawnInv() {
-        if (Main.plugin.getConfig().getString("Inventory.Use").equalsIgnoreCase("True")) {
+        if (Main.plugin.getConfig().getString("Inventory.Spawn.Use").equalsIgnoreCase("True")) {
             if (spawnInv != null) {
                 spawnInv.clear();
                 int spawnCount = Main.plugin.lists.getStringList("Spawns").size();
