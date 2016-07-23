@@ -44,19 +44,6 @@ public class Main extends JavaPlugin {
 	public FileConfiguration homeSettings = (YamlConfiguration.loadConfiguration(homeSettingsFile));
 	
 	public UpdateChecker updateChecker;
-	public String conVersion = "5.2";
-	public String listVersion = "1.0";
-	public String hubVersion = "1.0";
-	public String lobVersion = "1.0";
-	public String warpVersion = "1.0 ";
-	public String specVersion = "1.0";
-	public String homeVersion = "1.0";
-	public String spawnVersion = "1.0";
-	public String msgVersion = "2.0";
-	public String homeDataVersion = "1.0";
-	public String spawnDataVersion = "1.0";
-	public String signDataVersion = "1.0";
-	public String homeSettingsVersion = "1.0";
 
 	public void onDisable() {}
 	
@@ -149,24 +136,20 @@ public class Main extends JavaPlugin {
 			getCommand("invspectate").setExecutor(new InvSpectate(this));
 		}
 		getLogger().info("All enabled commands now registered!");
-		
-		if (getConfig().getString("Config Version").equalsIgnoreCase(conVersion)) {
-			 if (getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
-				 this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
-				 if (this.updateChecker.UpdateNeeded()) {
-					 String versionMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Version");
-					 String versionMsg = versionMsgOriginal.replaceAll("%version%", this.updateChecker.getVersion());
-					 String linkMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Link");
-					 String linkMsg = linkMsgOriginal.replaceAll("%link%", this.updateChecker.getLink());
-				     getLogger().info(ChatColor.translateAlternateColorCodes('&', versionMsg));
-				     getLogger().info(ChatColor.translateAlternateColorCodes('&', linkMsg));
-			    }
+
+		if (getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
+			this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
+			if (this.updateChecker.UpdateNeeded()) {
+				String versionMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Version");
+				String versionMsg = versionMsgOriginal.replaceAll("%version%", this.updateChecker.getVersion());
+				String linkMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Link");
+				String linkMsg = linkMsgOriginal.replaceAll("%link%", this.updateChecker.getLink());
+				getLogger().info(ChatColor.translateAlternateColorCodes('&', versionMsg));
+				getLogger().info(ChatColor.translateAlternateColorCodes('&', linkMsg));
 			}
 		}
-		if (getConfig().getString("Config Version").equalsIgnoreCase(conVersion)) {
-			if (getConfig().getString("Debug").equalsIgnoreCase("True")) {
-				Debug.startup();
-			}
+		if (getConfig().getString("Debug").equalsIgnoreCase("True")) {
+			Debug.startup();
 		}
 	}
 	 public void saveCustomConfig(FileConfiguration ymlConfig, File ymlFile) {

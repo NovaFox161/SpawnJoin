@@ -6,13 +6,27 @@ import java.io.File;
 import java.util.List;
 
 public class FileManager {
+	static String conVersion = "5.2";
+	static String listVersion = "1.0";
+	static String hubVersion = "1.0";
+	static String lobVersion = "1.0";
+	static String warpVersion = "1.0 ";
+	static String specVersion = "1.0";
+	static String homeVersion = "1.0";
+	static String spawnVersion = "1.0";
+	static String msgVersion = "2.0";
+	static String homeDataVersion = "1.0";
+	static String spawnDataVersion = "1.0";
+	static String signDataVersion = "1.0";
+	static String homeSettingsVersion = "1.0";
+
 	public static void configCreator() {
 		File file = new File(Main.plugin.getDataFolder() + File.separator + "config.yml");
 		if (!(file.exists())) {
 			Main.plugin.getLogger().info("Generating config.yml in folder /plugins/SpawnJoin/");
 			
 			Main.plugin.getConfig().addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.getConfig().addDefault("Config Version", Main.plugin.conVersion);
+			Main.plugin.getConfig().addDefault("Config Version", conVersion);
 			Main.plugin.getConfig().addDefault("Check for Updates", true);
 			Main.plugin.getConfig().addDefault("Announce Dev Join", true);
 			Main.plugin.getConfig().addDefault("Debug", false);
@@ -120,7 +134,7 @@ public class FileManager {
 		if (!(Main.plugin.hubFile.exists())) {
 			Main.plugin.getLogger().info("Generating hubs.yml in folder: /plugins/SpawnJoin/locations/");
 			Main.plugin.hubs.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.hubs.addDefault("Hubs Version", Main.plugin.hubVersion);
+			Main.plugin.hubs.addDefault("Hubs Version", hubVersion);
 			Main.plugin.hubs.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.hubs, Main.plugin.hubFile);
 			
@@ -130,7 +144,7 @@ public class FileManager {
 		if (!(Main.plugin.lobFile.exists())) {
 			Main.plugin.getLogger().info("Generating lobbies.yml in folder: /plugins/SpawnJoin/locations/");
 			Main.plugin.lobs.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.lobs.addDefault("Lobbies Version", Main.plugin.lobVersion);
+			Main.plugin.lobs.addDefault("Lobbies Version", lobVersion);
 			Main.plugin.lobs.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.lobs, Main.plugin.lobFile);
 			
@@ -140,7 +154,7 @@ public class FileManager {
 		if (!(Main.plugin.warpFile.exists())) {
 			Main.plugin.getLogger().info("Generating warps.yml in folder: /plugins/SpawnJoin/locations/");
 			Main.plugin.warps.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.warps.addDefault("Warps Version", Main.plugin.warpVersion);
+			Main.plugin.warps.addDefault("Warps Version", warpVersion);
 			Main.plugin.warps.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.warps, Main.plugin.warpFile);
 			
@@ -150,7 +164,7 @@ public class FileManager {
 		if (!(Main.plugin.specFile.exists())) {
 			Main.plugin.getLogger().info("Generating spectate.yml in folder: /plugins/SpawnJoin/locations/");
 			Main.plugin.spec.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.spec.addDefault("Spectate Version", Main.plugin.specVersion);
+			Main.plugin.spec.addDefault("Spectate Version", specVersion);
 			Main.plugin.spec.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.spec, Main.plugin.specFile);
 			
@@ -160,7 +174,7 @@ public class FileManager {
 		if (!(Main.plugin.homeFile.exists())) {
 			Main.plugin.getLogger().info("Generating homes.yml in folder: /plugins/SpawnJoin/locations/");
 			Main.plugin.homes.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.homes.addDefault("Homes Version", Main.plugin.homeVersion);
+			Main.plugin.homes.addDefault("Homes Version", homeVersion);
 			Main.plugin.homes.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.homes, Main.plugin.homeFile);
 			
@@ -170,7 +184,7 @@ public class FileManager {
 		if (!(Main.plugin.spawnFile.exists())) {
 			Main.plugin.getLogger().info("Generating spawns.yml in folder: /plugins/SpawnJoin/locations/");
 			Main.plugin.spawns.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.spawns.addDefault("Spawns Version", Main.plugin.spawnVersion);
+			Main.plugin.spawns.addDefault("Spawns Version", spawnVersion);
 			Main.plugin.spawns.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
 			
@@ -182,7 +196,7 @@ public class FileManager {
 		if (!(Main.plugin.listFile.exists())) {
 			Main.plugin.getLogger().info("Generating lists.yml in folder: /plugins/SpawnJoin/Data/");
 			Main.plugin.lists.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.lists.addDefault("Lists Version", Main.plugin.listVersion);
+			Main.plugin.lists.addDefault("Lists Version", listVersion);
 			Main.plugin.lists.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.lists, Main.plugin.listFile);
 			
@@ -192,7 +206,7 @@ public class FileManager {
 		if (!(Main.plugin.homeDataFile.exists())) {
 			Main.plugin.getLogger().info("Generating HomeData.yml in folder /plugins/SpawnJoin/Data");
 			Main.plugin.homeData.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.homeData.addDefault("HomeData Version", Main.plugin.homeDataVersion);
+			Main.plugin.homeData.addDefault("HomeData Version", homeDataVersion);
 			Main.plugin.homeData.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.homeData, Main.plugin.homeDataFile);
 			
@@ -202,7 +216,7 @@ public class FileManager {
 		if (!(Main.plugin.spawnDataFile.exists())) {
 			Main.plugin.getLogger().info("Generating SpawnData.yml in folder /plugins/SpawnJoin/Data");
 			Main.plugin.spawnData.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.spawnData.addDefault("SpawnData Version", Main.plugin.spawnDataVersion);
+			Main.plugin.spawnData.addDefault("SpawnData Version", spawnDataVersion);
 			Main.plugin.spawnData.addDefault("world_nether", "world");
 			Main.plugin.spawnData.addDefault("world_the_end", "world");
 			Main.plugin.spawnData.options().copyDefaults(true);
@@ -214,7 +228,7 @@ public class FileManager {
 		if (!(Main.plugin.signDataFile.exists())) {
 			Main.plugin.getLogger().info("Generating SignData.yml in folder /plugins/SpawnJoin/Data");
 			Main.plugin.signData.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.signData.addDefault("SignData Version", Main.plugin.signDataVersion);
+			Main.plugin.signData.addDefault("SignData Version", signDataVersion);
 			Main.plugin.signData.addDefault("NextId", 1);
 			Main.plugin.signData.options().copyDefaults(true);
 			Main.plugin.saveCustomConfig(Main.plugin.signData, Main.plugin.signDataFile);
@@ -227,7 +241,7 @@ public class FileManager {
 		if (!(Main.plugin.homeSettingsFile.exists())) {
 			Main.plugin.getLogger().info("Generating HomeSettings.yml in /plugins/SpawnJoin/Settings");
 			Main.plugin.homeSettings.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			Main.plugin.homeSettings.addDefault("Home Settings Version", Main.plugin.homeSettingsVersion);
+			Main.plugin.homeSettings.addDefault("Home Settings Version", homeSettingsVersion);
 			List<String> list = Main.plugin.homeSettings.getStringList("Groups");
 			list.add("Default");
 			list.add("VIP");
@@ -244,13 +258,13 @@ public class FileManager {
 		}
 	}
 	public static void fileVersionCheck() {
-		if (!(Main.plugin.getConfig().getString("Config Version").equalsIgnoreCase(Main.plugin.conVersion))) {
+		if (!(Main.plugin.getConfig().getString("Config Version").equalsIgnoreCase(conVersion))) {
 			Main.plugin.getLogger().severe("Config Outdated!!!! Plugin will not work properly!! Please delete the config file and restart the server"
 					+ "then edit the defaults to your preferred settings!!");
 			Main.plugin.getLogger().info("Disabling plugin to prevent further errors...");
 			Main.plugin.getServer().getPluginManager().disablePlugin(Main.plugin);
 		}
-		if (!(MessageManager.getMessageYml().getString("Messages Version").equalsIgnoreCase(Main.plugin.msgVersion))) {
+		if (!(MessageManager.getMessageYml().getString("Messages Version").equalsIgnoreCase(msgVersion))) {
 			Main.plugin.getLogger().severe("Message files Outdated!!!! Plugin will not work properly!! Please delete the Messages folder and restart the server"
 					+ "then edit the defaults to your preferred settings!!");
 			Main.plugin.getLogger().info("Disabling plugin to prevent further errors...");
