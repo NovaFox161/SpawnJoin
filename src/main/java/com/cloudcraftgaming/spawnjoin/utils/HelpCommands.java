@@ -1,9 +1,6 @@
 package com.cloudcraftgaming.spawnjoin.utils;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.utils.Help;
-import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
-import com.cloudcraftgaming.spawnjoin.utils.UpdateChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,7 +34,7 @@ implements CommandExecutor  {
 				    		sender.sendMessage(ChatColor.GOLD + "-~-~-~-~" + ChatColor.AQUA + " SpawnJoin Info " + ChatColor.GOLD + "~-~-~-~-");
 				    		sender.sendMessage(ChatColor.GREEN + "SpawnJoin is developed and managed by " + ChatColor.DARK_AQUA + "Shades161");
 				    		sender.sendMessage(ChatColor.GREEN + "SpawnJoin version: " + ChatColor.BLUE + plugin.getDescription().getVersion());
-				    		if (!(plugin.getConfig().getString("Config Version").equalsIgnoreCase(plugin.conVersion))) {
+				    		if (!(plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion))) {
 				    			sender.sendMessage(ChatColor.RED + "Config Outdated!!" + ChatColor.BLUE + " Version: " +ChatColor.RED + (plugin.getConfig().getString("Config Version")));
 				    			sender.sendMessage(ChatColor.RED + "Plugin will not work properly!!");
 				    			sender.sendMessage(ChatColor.RED + "Please copy your settings and delete the config file!!");
@@ -62,7 +59,7 @@ implements CommandExecutor  {
 				    } else if (args[0].equalsIgnoreCase("version")) {
 				    	if (sender.hasPermission("SpawnJoin.admin")) {
 				    		sender.sendMessage(ChatColor.GREEN + "SpawnJoin Version: " + ChatColor.BLUE + plugin.getDescription().getVersion());
-				    		if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(plugin.conVersion)) {
+				    		if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion)) {
 				    			if (plugin.getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
 									plugin.updateChecker = new UpdateChecker(plugin, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
 									if (plugin.updateChecker.UpdateNeeded()) {

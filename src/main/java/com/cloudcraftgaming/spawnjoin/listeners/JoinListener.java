@@ -1,6 +1,7 @@
 package com.cloudcraftgaming.spawnjoin.listeners;
 
 import com.cloudcraftgaming.spawnjoin.Main;
+import com.cloudcraftgaming.spawnjoin.utils.FileManager;
 import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.utils.Teleporter;
 import com.cloudcraftgaming.spawnjoin.utils.UpdateChecker;
@@ -33,7 +34,7 @@ implements Listener {
 		String prefix = MessageManager.getPrefix();
 		Player joiner = event.getPlayer();
 		if (joiner.hasPermission("SpawnJoin.notify.update")) {
-			if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(plugin.conVersion)) {
+			if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion)) {
 				if (plugin.getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
 					if (plugin.getConfig().getString("NOTIFICATIONS.Update").equalsIgnoreCase("True")) {
 						plugin.updateChecker = new UpdateChecker(plugin, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");

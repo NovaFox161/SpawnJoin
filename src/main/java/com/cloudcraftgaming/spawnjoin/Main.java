@@ -138,7 +138,7 @@ public class Main extends JavaPlugin {
 		getLogger().info("All enabled commands now registered!");
 
 		if (getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
-			this.updateChecker = new UpdateChecker(this, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
+			this.updateChecker = new UpdateChecker(this, "https://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
 			if (this.updateChecker.UpdateNeeded()) {
 				String versionMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Version");
 				String versionMsg = versionMsgOriginal.replaceAll("%version%", this.updateChecker.getVersion());

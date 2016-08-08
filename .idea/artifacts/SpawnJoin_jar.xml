@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="SpawnJoin:jar">
-    <output-path>E:/CloudCraft/My Plugins/SpawnJoin</output-path>
+    <output-path>R:/My Plugins/SpawnJoin</output-path>
     <root id="archive" name="SpawnJoin.jar">
       <element id="module-output" name="SpawnJoin" />
     </root>

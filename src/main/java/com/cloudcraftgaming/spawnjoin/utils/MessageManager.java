@@ -31,7 +31,7 @@ public class MessageManager {
 			YamlConfiguration en = YamlConfiguration.loadConfiguration(enFile);
 			Main.plugin.getLogger().info("Generating En.yml in folder: /plugins/SpawnJoin/Messages/");
 			en.addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
-			en.addDefault("Messages Version", Main.plugin.msgVersion);
+			en.addDefault("Messages Version", FileManager.msgVersion);
 			en.addDefault("Prefix", "&5[SpawnJoin]");
 
 			en.addDefault("Join.Bypass", "&6You have bypassed SpawnJoin auto teleport!");

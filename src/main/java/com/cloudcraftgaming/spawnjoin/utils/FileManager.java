@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.List;
 
 public class FileManager {
-	static String conVersion = "5.2";
+	public static String conVersion = "5.2";
 	static String listVersion = "1.0";
 	static String hubVersion = "1.0";
 	static String lobVersion = "1.0";
@@ -14,7 +14,7 @@ public class FileManager {
 	static String specVersion = "1.0";
 	static String homeVersion = "1.0";
 	static String spawnVersion = "1.0";
-	static String msgVersion = "2.0";
+	public static String msgVersion = "2.0";
 	static String homeDataVersion = "1.0";
 	static String spawnDataVersion = "1.0";
 	static String signDataVersion = "1.0";
