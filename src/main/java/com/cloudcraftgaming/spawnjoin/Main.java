@@ -6,10 +6,13 @@ import com.cloudcraftgaming.spawnjoin.listeners.*;
 import com.cloudcraftgaming.spawnjoin.lobby.*;
 import com.cloudcraftgaming.spawnjoin.menu.MenuManager;
 import com.cloudcraftgaming.spawnjoin.spawn.*;
-import com.cloudcraftgaming.spawnjoin.spectate.*;
+import com.cloudcraftgaming.spawnjoin.spectate.Delspectate;
+import com.cloudcraftgaming.spawnjoin.spectate.InvSpectate;
+import com.cloudcraftgaming.spawnjoin.spectate.SetSpectate;
+import com.cloudcraftgaming.spawnjoin.spectate.Spectate;
 import com.cloudcraftgaming.spawnjoin.utils.*;
 import com.cloudcraftgaming.spawnjoin.warp.*;
-import org.bukkit.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,8 +45,6 @@ public class Main extends JavaPlugin {
 	public FileConfiguration signData = (YamlConfiguration.loadConfiguration(signDataFile));
 	public File homeSettingsFile = new File(this.getDataFolder() + "/Settings/HomeSettings.yml");
 	public FileConfiguration homeSettings = (YamlConfiguration.loadConfiguration(homeSettingsFile));
-	
-	public UpdateChecker updateChecker;
 
 	public void onDisable() {}
 	
@@ -137,21 +138,22 @@ public class Main extends JavaPlugin {
 		}
 		getLogger().info("All enabled commands now registered!");
 
-		if (getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
-			this.updateChecker = new UpdateChecker(this, "https://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
-			if (this.updateChecker.UpdateNeeded()) {
-				String versionMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Version");
-				String versionMsg = versionMsgOriginal.replaceAll("%version%", this.updateChecker.getVersion());
-				String linkMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Console.Link");
-				String linkMsg = linkMsgOriginal.replaceAll("%link%", this.updateChecker.getLink());
-				getLogger().info(ChatColor.translateAlternateColorCodes('&', versionMsg));
-				getLogger().info(ChatColor.translateAlternateColorCodes('&', linkMsg));
-			}
-		}
+		checkForUpdatesOnStartup();
+
 		if (getConfig().getString("Debug").equalsIgnoreCase("True")) {
 			Debug.startup();
 		}
 	}
+
+	private void checkForUpdatesOnStartup() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+			@Override
+			public void run() {
+				UpdateChecker.checkForUpdates();
+			}
+		}, 20L);
+	}
+
 	 public void saveCustomConfig(FileConfiguration ymlConfig, File ymlFile) {
 		 try {
 			 ymlConfig.save(ymlFile);

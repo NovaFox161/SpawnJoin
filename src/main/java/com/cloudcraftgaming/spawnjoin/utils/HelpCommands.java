@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class HelpCommands 
 implements CommandExecutor  {
@@ -42,15 +43,11 @@ implements CommandExecutor  {
 				    		} else {
 				    			sender.sendMessage(ChatColor.GREEN + "Config Up-To-Date!");
 				    		}
-				    		if (plugin.getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
-				    			plugin.updateChecker = new UpdateChecker(plugin, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
-								if (plugin.updateChecker.UpdateNeeded()) {
-									sender.sendMessage(ChatColor.RED + "New update available for SpawnJoin version: " + ChatColor.BLUE + plugin.updateChecker.getVersion());
-									sender.sendMessage(ChatColor.GREEN + "Download it at: " + ChatColor.BLUE + plugin.updateChecker.getLink());
-								} else {
-									sender.sendMessage(ChatColor.GREEN + "SpawnJoin is up to date!");
-								}
-				    		}
+				    		if (sender instanceof Player) {
+								UpdateChecker.checkForUpdates((Player)sender);
+							} else {
+				    			UpdateChecker.checkForUpdates();
+							}
 				    	} else {
 				    		if (plugin.getConfig().getString("NOTIFICATIONS.Perm").equalsIgnoreCase("True")) {
 				    			sender.sendMessage(ChatColor.RED + "You do not have permission to do that!");
@@ -60,16 +57,10 @@ implements CommandExecutor  {
 				    	if (sender.hasPermission("SpawnJoin.admin")) {
 				    		sender.sendMessage(ChatColor.GREEN + "SpawnJoin Version: " + ChatColor.BLUE + plugin.getDescription().getVersion());
 				    		if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion)) {
-				    			if (plugin.getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
-									plugin.updateChecker = new UpdateChecker(plugin, "http://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
-									if (plugin.updateChecker.UpdateNeeded()) {
-										sender.sendMessage(ChatColor.RED + "New update available for SpawnJoin version: " + ChatColor.BLUE + plugin.updateChecker.getVersion());
-										sender.sendMessage(ChatColor.GREEN + "Download it at: " + ChatColor.BLUE + plugin.updateChecker.getLink());
-									} else {
-										sender.sendMessage(ChatColor.GREEN + "SpawnJoin is up to date!");
-									}
+				    			if (sender instanceof Player) {
+				    				UpdateChecker.checkForUpdates((Player)sender);
 								} else {
-									sender.sendMessage(ChatColor.RED + "SpawnJoin cannot check for updates because it is disabled in the config.");
+				    				UpdateChecker.checkForUpdates();
 								}
 							}
 						} else {

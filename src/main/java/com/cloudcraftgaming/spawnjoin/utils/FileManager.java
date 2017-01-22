@@ -28,6 +28,7 @@ public class FileManager {
 			Main.plugin.getConfig().addDefault("DO NOT DELETE", "SpawnJoin is developed and managed by Shades161");
 			Main.plugin.getConfig().addDefault("Config Version", conVersion);
 			Main.plugin.getConfig().addDefault("Check for Updates", true);
+			Main.plugin.getConfig().addDefault("Download Updates", false);
 			Main.plugin.getConfig().addDefault("Announce Dev Join", true);
 			Main.plugin.getConfig().addDefault("Debug", false);
 			Main.plugin.getConfig().addDefault("LogCommandsToFile", false);

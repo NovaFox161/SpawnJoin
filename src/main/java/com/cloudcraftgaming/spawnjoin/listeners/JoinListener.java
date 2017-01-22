@@ -37,15 +37,7 @@ implements Listener {
 			if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion)) {
 				if (plugin.getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
 					if (plugin.getConfig().getString("NOTIFICATIONS.Update").equalsIgnoreCase("True")) {
-						plugin.updateChecker = new UpdateChecker(plugin, "https://dev.bukkit.org/bukkit-plugins/teleport-spawn-join/files.rss");
-						if (plugin.updateChecker.UpdateNeeded()) {
-							String versionMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Version");
-							String versionMsg = versionMsgOriginal.replaceAll("%version%", plugin.updateChecker.getVersion());
-							String linkMsgOriginal = MessageManager.getMessageYml().getString("Notifications.Update.Link");
-							String linkMsg = linkMsgOriginal.replaceAll("%link%", plugin.updateChecker.getLink());
-						    joiner.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', versionMsg));
-						    joiner.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', linkMsg));
-						}
+						UpdateChecker.checkForUpdates(joiner);
 					}
 				}
 			}
