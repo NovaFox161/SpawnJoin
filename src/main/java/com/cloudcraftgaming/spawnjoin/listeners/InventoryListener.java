@@ -1,10 +1,10 @@
 package com.cloudcraftgaming.spawnjoin.listeners;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.menu.MenuManager;
 import com.cloudcraftgaming.spawnjoin.utils.DelayChecker;
 import com.cloudcraftgaming.spawnjoin.utils.LocationChecker;
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,9 +20,11 @@ import org.bukkit.inventory.meta.ItemMeta;
  */
 public class InventoryListener implements Listener {
     Main plugin;
+
     public InventoryListener(Main instance) {
         plugin = instance;
     }
+
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();

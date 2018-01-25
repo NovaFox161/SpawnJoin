@@ -1,8 +1,8 @@
 package com.cloudcraftgaming.spawnjoin.home;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.menu.MenuManager;
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,9 +14,11 @@ import org.bukkit.entity.Player;
  */
 public class InvHome implements CommandExecutor {
     Main plugin;
+
     public InvHome(Main instance) {
         plugin = instance;
     }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("InvHome")) {

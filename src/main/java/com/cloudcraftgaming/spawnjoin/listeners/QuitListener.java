@@ -12,9 +12,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
  */
 public class QuitListener implements Listener {
     Main plugin;
+
     public QuitListener(Main instance) {
         plugin = instance;
     }
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onQuit(PlayerQuitEvent event) {
         if (MenuManager.hasHomeInventoryMenu(event.getPlayer())) {

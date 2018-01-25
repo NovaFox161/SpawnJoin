@@ -1,23 +1,27 @@
 package com.cloudcraftgaming.spawnjoin.spawn;
 
 import com.cloudcraftgaming.spawnjoin.Main;
-import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.menu.MenuManager;
+import com.cloudcraftgaming.spawnjoin.utils.FileManager;
 import com.cloudcraftgaming.spawnjoin.utils.LocationChecker;
+import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
  * Created by Nova Fox on 2/7/2016.
  */
 public class EditSpawn implements CommandExecutor {
-    Main plugin;
+    private Main plugin;
+
     public EditSpawn(Main instance) {
         plugin = instance;
     }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("editspawn")) {
@@ -46,7 +50,7 @@ public class EditSpawn implements CommandExecutor {
                             String item = args[2];
                             EditSpawn.editItem(spawnName, item, sender);
                         }
-                    } else if (args.length > 3) {
+                    } else {
                         String msg = MessageManager.getMessageYml().getString("Notifications.ManyArgs");
                         sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
                     }
@@ -57,33 +61,39 @@ public class EditSpawn implements CommandExecutor {
         }
         return false;
     }
+
     private static void editCost(String spawnName, String number, CommandSender sender) {
         String prefix = MessageManager.getPrefix();
         if (!(LocationChecker.spawnOnFile(spawnName))) {
             String msg = MessageManager.getMessageYml().getString("Spawn.NoSpawn");
             sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', msg));
         } else {
+            YamlConfiguration spawns = FileManager.getSpawnYml();
+
             Integer costInt = Integer.valueOf(number);
-            Main.plugin.spawns.set("Spawns." + spawnName + ".cost", costInt);
-            Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
+            spawns.set("Spawns." + spawnName + ".cost", costInt);
+            FileManager.saveCustomConfig(spawns, FileManager.getSpawnFile());
             String original = MessageManager.getMessageYml().getString("Spawn.EditCost");
             String replaced = original.replaceAll("%spawn%", spawnName).replaceAll("%cost%", number);
             sender.sendMessage(prefix + ChatColor.translateAlternateColorCodes('&', replaced));
             MenuManager.updateSpawnInv();
         }
     }
+
     @SuppressWarnings("deprecation")
     private static void editItem(String spawnName, String item, CommandSender sender) {
-        if (!(LocationChecker.spawnOnFile(spawnName))) {
+        if (!LocationChecker.spawnOnFile(spawnName)) {
             String msg = MessageManager.getMessageYml().getString("Spawn.NoSpawn");
             sender.sendMessage(MessageManager.getPrefix() + ChatColor.translateAlternateColorCodes('&', msg));
         } else {
             if (!item.contains(":")) {
                 try {
+                    YamlConfiguration spawns = FileManager.getSpawnYml();
+
                     Integer itemId = Integer.parseInt(item);
-                    Main.plugin.spawns.set("Spawns." + spawnName + ".item", itemId);
-                    Main.plugin.spawns.set("Spawns." + spawnName + ".itemProp", null);
-                    Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
+                    spawns.set("Spawns." + spawnName + ".item", itemId);
+                    spawns.set("Spawns." + spawnName + ".itemProp", null);
+                    FileManager.saveCustomConfig(spawns, FileManager.getSpawnFile());
                     Material itemMat = Material.getMaterial(itemId);
                     String msgOr = MessageManager.getMessageYml().getString("Spawn.EditItem");
                     String msg = msgOr.replaceAll("%spawn%", spawnName).replaceAll("%item%", itemMat.name());
@@ -95,11 +105,13 @@ public class EditSpawn implements CommandExecutor {
                 }
             } else {
                 try {
+                    YamlConfiguration spawns = FileManager.getSpawnYml();
+
                     Integer itemId = Integer.valueOf(item.split(":")[0]);
                     Short damage = Short.valueOf(item.split(":")[1]);
-                    Main.plugin.spawns.set("Spawns." + spawnName + ".item", itemId);
-                    Main.plugin.spawns.set("Spawns." + spawnName + "itemProp", damage);
-                    Main.plugin.saveCustomConfig(Main.plugin.spawns, Main.plugin.spawnFile);
+                    spawns.set("Spawns." + spawnName + ".item", itemId);
+                    spawns.set("Spawns." + spawnName + "itemProp", damage);
+                    FileManager.saveCustomConfig(spawns, FileManager.getSpawnFile());
                     Material itemMat = Material.getMaterial(itemId);
                     String msgOr = MessageManager.getMessageYml().getString("Spawn.EditItem");
                     String msg = msgOr.replaceAll("%spawn%", spawnName).replaceAll("%item%", itemMat.name());

@@ -106,3 +106,4 @@ local.properties
 .recommenders/
 /.idea/
 /SpawnJoin.iml
+/src/main/resources/META-INF/
