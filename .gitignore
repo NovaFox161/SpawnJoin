@@ -17,7 +17,6 @@ hs_err_pid*
 
 # User-specific stuff:
 .idea/tasks.xml
-.idea/dictionaries
 .idea/jsLibraryMappings.xml
 
 # Sensitive or high-churn files:
