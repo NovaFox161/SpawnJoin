@@ -12,7 +12,6 @@ import com.cloudcraftgaming.spawnjoin.spectate.SetSpectate;
 import com.cloudcraftgaming.spawnjoin.spectate.Spectate;
 import com.cloudcraftgaming.spawnjoin.utils.*;
 import com.cloudcraftgaming.spawnjoin.warp.*;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -112,19 +111,10 @@ public class Main extends JavaPlugin {
         }
         getLogger().info("All enabled commands now registered!");
 
-        checkForUpdatesOnStartup();
+        //TODO: Use my new updater
 
         if (getConfig().getString("Debug").equalsIgnoreCase("True")) {
             Debug.startup();
         }
-    }
-
-    private void checkForUpdatesOnStartup() {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-            @Override
-            public void run() {
-                UpdateChecker.checkForUpdates();
-            }
-        }, 20L);
     }
 }

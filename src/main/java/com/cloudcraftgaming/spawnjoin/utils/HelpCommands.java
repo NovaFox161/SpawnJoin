@@ -46,9 +46,9 @@ public class HelpCommands
                                 sender.sendMessage(ChatColor.GREEN + "Config Up-To-Date!");
                             }
                             if (sender instanceof Player) {
-                                UpdateChecker.checkForUpdates((Player) sender);
+                                //TODO: use my new updater
                             } else {
-                                UpdateChecker.checkForUpdates();
+                                //TODO: use my new updater
                             }
                         } else {
                             if (plugin.getConfig().getString("NOTIFICATIONS.Perm").equalsIgnoreCase("True")) {
@@ -60,9 +60,9 @@ public class HelpCommands
                             sender.sendMessage(ChatColor.GREEN + "SpawnJoin Version: " + ChatColor.BLUE + plugin.getDescription().getVersion());
                             if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion)) {
                                 if (sender instanceof Player) {
-                                    UpdateChecker.checkForUpdates((Player) sender);
+                                    //TODO: use my new updater
                                 } else {
-                                    UpdateChecker.checkForUpdates();
+                                    //TODO: Use my new updater
                                 }
                             }
                         } else {

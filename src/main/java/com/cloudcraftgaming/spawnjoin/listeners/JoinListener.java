@@ -4,7 +4,6 @@ import com.cloudcraftgaming.spawnjoin.Main;
 import com.cloudcraftgaming.spawnjoin.utils.FileManager;
 import com.cloudcraftgaming.spawnjoin.utils.MessageManager;
 import com.cloudcraftgaming.spawnjoin.utils.Teleporter;
-import com.cloudcraftgaming.spawnjoin.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -32,19 +31,7 @@ public class JoinListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void updateNotify(PlayerJoinEvent event) {
-        Player joiner = event.getPlayer();
-        if (joiner.hasPermission("SpawnJoin.notify.update")) {
-            if (plugin.getConfig().getString("Config Version").equalsIgnoreCase(FileManager.conVersion)) {
-                if (plugin.getConfig().getString("Check for Updates").equalsIgnoreCase("True")) {
-                    if (plugin.getConfig().getString("NOTIFICATIONS.Update").equalsIgnoreCase("True")) {
-                        UpdateChecker.checkForUpdates(joiner);
-                    }
-                }
-            }
-        }
-    }
+    //TODO: Use my new updater
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void homeDataSet(PlayerJoinEvent event) {
